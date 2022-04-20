@@ -54,6 +54,8 @@ module.exports = class extends Language {
             COMMAND_PLAY_TRACK_LOADED: (provider, name) => `${provider} Трек **${name}** был добавлен в очередь.`,
             COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed) => `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** треков).${failed && failed > 1 ? `\n${failed} треков не было загружено (в стране расположения сервера они недоступны). ` : ''}`,
             COMMAND_PLAY_NOW_PLAYING: (provider, name) => `${provider} Сейчас играет **${name}**`,
+            COMMAND_PLAY_PLAYLIST_EMPTY: () => 'Не удалось загрузить плейлист, потому что он пустой.',
+            COMMAND_PLAY_PLAYLIST_PRIVACY: () => 'Не удалось загрузить плейлист, потому что он приватный.',
 
             COMMAND_NP_TITLE: (name) => `Сейчас проигрываются треки для ${name}`,
             COMMAND_NP_LAST_TRACK: () => '••• Играет последний трек',
@@ -319,6 +321,9 @@ module.exports = class extends Language {
             PLAYLIST_RENAME_DESCRIPTION: () => 'Переименовывает ваш плейлист',
             PLAYLIST_RENAME_NAME_DESCRIPTION: () => 'Название плейлиста',
             PLAYLIST_RENAME_NEW_DESCRIPTION: () => 'Новое название плейлиста',
+            PLAYLIST_PUBLIC_DESCRIPTION: () => 'Изменяет параметры приватности вашего плейлиста.',
+            PLAYLIST_PUBLIC_NAME: () => 'Название плейлиста',
+            PLAYLIST_PUBLIC_PRIVACY: () => 'Приватность плейлиста',
 
             QUEUE_LIST_DESCRIPTION: () => 'Выдает очередь для этого сервера.',
             QUEUE_LIST_PAGE_DESCRIPTION: () => 'Страница',

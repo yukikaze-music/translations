@@ -54,6 +54,8 @@ module.exports = class extends Language {
             COMMAND_PLAY_TRACK_LOADED: (provider, name) => `${provider} Track **${name}** has been added to the queue.`,
             COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed) => `${provider} The playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** tracks).${failed && failed > 1 ? `\n${failed} tracks were not queued (they are not available in the country where the server is located` : ''}`,
             COMMAND_PLAY_NOW_PLAYING: (provider, name) => `${provider} **${name}** is playing now.`,
+            COMMAND_PLAY_PLAYLIST_EMPTY: () => 'The playlist could not be loaded, because it is empty.',
+            COMMAND_PLAY_PLAYLIST_PRIVACY: () => 'The playlist could not be loaded, because it is private.',
 
             COMMAND_NP_TITLE: (name) => `Tracks are currently being played for ${name}`,
             COMMAND_NP_LAST_TRACK: () => '••• The last track is playing now.',
@@ -320,6 +322,9 @@ module.exports = class extends Language {
             PLAYLIST_RENAME_DESCRIPTION: () => 'Renames your playlist.',
             PLAYLIST_RENAME_NAME_DESCRIPTION: () => 'Playlist name',
             PLAYLIST_RENAME_NEW_DESCRIPTION: () => 'New playlist name',
+            PLAYLIST_PUBLIC_DESCRIPTION: () => 'Changes the privacy settings of your playlist.',
+            PLAYLIST_PUBLIC_NAME: () => 'Playlist name',
+            PLAYLIST_PUBLIC_PRIVACY: () => 'Playlist privacy',
 
             QUEUE_LIST_DESCRIPTION: () => 'Returns the queue for this server.',
             QUEUE_LIST_PAGE_DESCRIPTION: () => 'Page',
