@@ -2,7 +2,7 @@ const Language = require('@lib/structures/Language');
 
 module.exports = class extends Language {
     constructor() {
-        super('ru');
+        super('ru-RU');
 
         this.language = {
             LANGUAGE_NAME: () => 'русский',
