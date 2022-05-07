@@ -274,6 +274,8 @@ module.exports = class extends Language {
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Параметры сервера ${name}`,
             COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Язык: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не установлено\`**'}\nЛайвплеер: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не установлен\`**'}`,
+            
+            COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
 
             FILTERS_INFO_DESCRIPTION: () => 'Показывает параметры эффектов.',
             FILTERS_CLEAR_DESCRIPTION: () => 'Сбрасывает все установленные параметры эффектов',
@@ -378,7 +380,10 @@ module.exports = class extends Language {
             VOTESKIP_DESCRIPTION: () => 'Проголосовать за пропуск текущего трека.',
 
             YASEARCH_DESCRIPTION: () => 'Ищет треки на Yandex.Music',
-            YASEARCH_QUERY_DESCRIPTION: () => 'Запрос'
+            YASEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+
+            COMMAND_ZVUK_SEARCH_DESCRIPTION: () => 'Ищет треки на платформе Zvuk',
+            COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос'
         }
     }
 }

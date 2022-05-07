@@ -276,6 +276,8 @@ module.exports = class extends Language {
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Server settings for ${name}`,
             COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Language: **\`${language}\`**\nDJ role: ${djRoleID ? `<@&${djRoleID}>` : '**\`Not installed\`**'}\nLiveplayer: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Not installed\`**'}`,
 
+            COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
+
             FILTERS_INFO_DESCRIPTION: () => 'Shows effect options.',
             FILTERS_CLEAR_DESCRIPTION: () => 'Resets all set effect parameters.',
             FILTERS_BASS_DESCRIPTION: () => 'Sets a bass-boost to the current playback.',
@@ -379,7 +381,10 @@ module.exports = class extends Language {
             VOTESKIP_DESCRIPTION: () => 'Vote to skip the current track.',
 
             YASEARCH_DESCRIPTION: () => 'Search tracks on Yandex.Music.',
-            YASEARCH_QUERY_DESCRIPTION: () => 'Query'
+            YASEARCH_QUERY_DESCRIPTION: () => 'Query',
+
+            COMMAND_ZVUK_SEARCH_DESCRIPTION: () => 'Search tracks on Zvuk',
+            COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Query'
         }
     }
 }
