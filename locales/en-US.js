@@ -266,12 +266,12 @@ module.exports = class extends Language {
             COMMAND_PREMIUM_GUILD_ENDS: (ends) => `\n**A premium subscription is activated on your server, which expires on <t:${ends}>.**`,
             COMMAND_PREMIUM_USER_ENDS: (ends) => `\n**You have an active premium subscription, which expires on <t:${ends}>.**`,
 
-            COMMAND_VK_USER_NOT_FOUND: () => 'The user was not found, please check the id.',
-            COMMAND_VK_TRACKS_NOT_LOADED: () => 'Unable to load tracks, please change your privacy settings.',
-            COMMAND_VK_LOADED: (provider, name, size, failed) => `${provider} Playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** tracks).${failed && failed > 1 ? `\n${failed} tracks were not queued (they are not available in the country where the server is located` : ''}`,
-            COMMAND_VKSEARCH_NO_MATCHES: () => 'Nothing found for your request.',
-            COMMAND_SCSEARCH_NO_MATCHES: () => 'Nothing found for your request.',
-            COMMAND_YASEARCH_NO_MATCHES: () => 'Nothing found for your request.',
+            COMMAND_VK_USER_USER_NOT_FOUND: () => 'The user was not found, please check the id.',
+            COMMAND_VK_USER_TRACKS_NOT_LOADED: () => 'Unable to load tracks, please change your privacy settings.',
+            COMMAND_VK_USER_LOADED: (provider, name, size, failed) => `${provider} Playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** tracks).${failed && failed > 1 ? `\n${failed} tracks were not queued (they are not available in the country where the server is located` : ''}`,
+            COMMAND_VK_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
+            COMMAND_SOUNDCLOUD_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
+            COMMAND_YANDEX_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Server settings for ${name}`,
             COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Language: **\`${language}\`**\nDJ role: ${djRoleID ? `<@&${djRoleID}>` : '**\`Not installed\`**'}\nLiveplayer: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Not installed\`**'}`,
@@ -343,8 +343,8 @@ module.exports = class extends Language {
 
             RESUME_DESCRIPTION: () => 'Unpauses the player.',
 
-            SCSEARCH_DESCRIPTION: () => 'Search tracks on SoundCloud',
-            SCSEARCH_QUERY_DESCRIPTION: () => 'Query',
+            SOUNDCLOUD_SEARCH_DESCRIPTION: () => 'Search tracks on SoundCloud',
+            SOUNDCLOUD_SEARCH_QUERY_DESCRIPTION: () => 'Query',
 
             SEEK_DESCRIPTION: () => 'Rewinds the track to the specified position.',
             SEEK_TIME_DESCRIPTION: () => 'Time',
@@ -367,21 +367,21 @@ module.exports = class extends Language {
 
             STOP_DESCRIPTION: () => 'Stops music playback for this server.',
 
-            VK_DESCRIPTION: () => 'Plays the specified number of saved VK user tracks.',
-            VK_USER_DESCRIPTION: () => 'User ID',
-            VK_COUNT_DESCRIPTION: () => 'Number of tracks',
-            VK_OFFSET_DESCRIPTION: () => 'Start position',
+            VK_USER_DESCRIPTION: () => 'Plays the specified number of saved VK user tracks.',
+            VK_USER_USER_DESCRIPTION: () => 'User ID',
+            VK_USER_COUNT_DESCRIPTION: () => 'Number of tracks',
+            VK_USER_OFFSET_DESCRIPTION: () => 'Start position',
 
-            VKSEARCH_DESCRIPTION: () => 'Search tracks on VK.',
-            VKSEARCH_QUERY_DESCRIPTION: () => 'Query',
+            VK_SEARCH_DESCRIPTION: () => 'Search tracks on VK.',
+            VK_SEARCH_QUERY_DESCRIPTION: () => 'Query',
 
             VOLUME_DESCRIPTION: () => 'Changes the volume level for this server.',
             VOLUME_LEVEL_DESCRIPTION: () => 'Volume level',
 
             VOTESKIP_DESCRIPTION: () => 'Vote to skip the current track.',
 
-            YASEARCH_DESCRIPTION: () => 'Search tracks on Yandex.Music.',
-            YASEARCH_QUERY_DESCRIPTION: () => 'Query',
+            YANDEX_SEARCH_DESCRIPTION: () => 'Search tracks on Yandex.Music.',
+            YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Query',
 
             COMMAND_ZVUK_SEARCH_DESCRIPTION: () => 'Search tracks on Zvuk',
             COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Query'

@@ -265,12 +265,12 @@ module.exports = class extends Language {
             COMMAND_PREMIUM_GUILD_ENDS: (ends) => `\n**На вашем сервере активирована премиум подписка, которая закончится <t:${ends}>.**`,
             COMMAND_PREMIUM_USER_ENDS: (ends) => `\n**У вас активирована премиум подписка, которая закончится <t:${ends}>.**`,
 
-            COMMAND_VK_USER_NOT_FOUND: () => 'Пользователь не был найден, проверьте указанный айди.',
-            COMMAND_VK_TRACKS_NOT_LOADED: () => 'Не удалось загрузить треки, попробуйте изменить настройки приватности.',
-            COMMAND_VK_LOADED: (provider, name, size, failed) => `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** треков).${failed && failed > 1 ? `\n${failed} треков не было загружено (в стране расположения сервера они недоступны). ` : ''}`,
-            COMMAND_VKSEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
-            COMMAND_SCSEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
-            COMMAND_YASEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
+            COMMAND_VK_USER_USER_NOT_FOUND: () => 'Пользователь не был найден, проверьте указанный айди.',
+            COMMAND_VK_USER_TRACKS_NOT_LOADED: () => 'Не удалось загрузить треки, попробуйте изменить настройки приватности.',
+            COMMAND_VK_USER_LOADED: (provider, name, size, failed) => `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** треков).${failed && failed > 1 ? `\n${failed} треков не было загружено (в стране расположения сервера они недоступны). ` : ''}`,
+            COMMAND_VK_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
+            COMMAND_SOUNDCLOUD_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
+            COMMAND_YANDEX_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Параметры сервера ${name}`,
             COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Язык: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не установлено\`**'}\nЛайвплеер: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не установлен\`**'}`,
@@ -342,8 +342,8 @@ module.exports = class extends Language {
 
             RESUME_DESCRIPTION: () => 'Снимает плеер с паузы.',
 
-            SCSEARCH_DESCRIPTION: () => 'Ищет треки на SoundCloud',
-            SCSEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            SOUNDCLOUD_SEARCH_DESCRIPTION: () => 'Ищет треки на SoundCloud',
+            SOUNDCLOUD_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
 
             SEEK_DESCRIPTION: () => 'Перематывает трек на указанную позицию.',
             SEEK_TIME_DESCRIPTION: () => 'Время',
@@ -366,21 +366,21 @@ module.exports = class extends Language {
 
             STOP_DESCRIPTION: () => 'Останавливает воспроизведение музыки для этого сервера.',
 
-            VK_DESCRIPTION: () => 'Проигрывает указанное количество сохраненных треков пользователя VK',
-            VK_USER_DESCRIPTION: () => 'ID пользователя',
-            VK_COUNT_DESCRIPTION: () => 'Количество треков',
-            VK_OFFSET_DESCRIPTION: () => 'Начало позиции',
+            VK_USER_DESCRIPTION: () => 'Проигрывает указанное количество сохраненных треков пользователя VK',
+            VK_USER_USER_DESCRIPTION: () => 'ID пользователя',
+            VK_USER_COUNT_DESCRIPTION: () => 'Количество треков',
+            VK_USER_OFFSET_DESCRIPTION: () => 'Начало позиции',
 
-            VKSEARCH_DESCRIPTION: () => 'Ищет треки в VK',
-            VKSEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            VK_SEARCH_DESCRIPTION: () => 'Ищет треки в VK',
+            VK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
 
             VOLUME_DESCRIPTION: () => 'Изменяет уровень громкости для этого сервера.',
             VOLUME_LEVEL_DESCRIPTION: () => 'Громкость',
 
             VOTESKIP_DESCRIPTION: () => 'Проголосовать за пропуск текущего трека.',
 
-            YASEARCH_DESCRIPTION: () => 'Ищет треки на Yandex.Music',
-            YASEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            YANDEX_SEARCH_DESCRIPTION: () => 'Ищет треки на Yandex.Music',
+            YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
 
             COMMAND_ZVUK_SEARCH_DESCRIPTION: () => 'Ищет треки на платформе Zvuk',
             COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос'
