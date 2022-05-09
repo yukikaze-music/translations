@@ -72,18 +72,21 @@ module.exports = class extends Language {
             COMMAND_SKIP_MISSING_PERMISSIONS: (user) => `Вы не можете пропустить этот трек, попросите <@${user}> сделать это.`,
             COMMAND_SKIP_SKIPPED: () => ':track_next: **Трек пропущен.**',
 
-            COMMAND_STOP_MISSING_PERMISSIONS: () => 'Вы не можете остановить воспроизведение. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_STOP_MISSING_PERMISSIONS: () => 'Вы не можете остановить воспроизведение. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_STOP_STOPPED: () => ':stop_button: **Бот покинул голосовой канал.**',
 
-            COMMAND_SEEK_MISSING_PERMISSIONS: () => 'Вы не можете перемотать этот трек. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_CLEAR_MISSING_PERMISSIONS: () => 'Вы не можете почистить очередь. Попросите сделать это участника с ролью `Dj`.',
+            COMMAND_CLEAR_QUEUE_CLEARED: () => '☑️ **Очередь почищена.**',
+
+            COMMAND_SEEK_MISSING_PERMISSIONS: () => 'Вы не можете перемотать этот трек. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_SEEK_PARAMS: () => 'Укажите позицию для перемотки.',
             COMMAND_SEEK_INVALID_POSITION: () => 'Указана неверная позиция для перемотки.',
             COMMAND_SEEK_SEEKED: () => '⏩ **Трек перемотан.**',
 
-            COMMAND_REPLAY_MISSING_PERMISSIONS: () => 'Вы не можете перемотать этот трек. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_REPLAY_MISSING_PERMISSIONS: () => 'Вы не можете перемотать этот трек. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_REPLAY_SEEKED: () => 'Проигрывание трека начато с начала.',
 
-            COMMAND_MOVE_MISSING_PERMISSIONS: () => 'Вы не можете переместить этот трек. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_MOVE_MISSING_PERMISSIONS: () => 'Вы не можете переместить этот трек. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_MOVE_MISSING_POSITIONS: () => 'Укажите **номер трека** для перемещения и **новую позицию трека**.',
             COMMAND_MOVE_INDEX: () => 'Указана неверная позиция трека для перемещения.',
             COMMAND_MOVE_DESTINATION: () => 'Указана неверная новая позиция для перемещения. Она должна быть в пределах очереди.',
@@ -92,13 +95,13 @@ module.exports = class extends Language {
             COMMAND_SHUFFLE_MISSING_PERMISSIONS: () => 'Вы не можете перемешать очередь. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_SHUFFLE_SHUFFLED: () => ':twisted_rightwards_arrows: **Очередь перемешана.**',
 
-            COMMAND_PAUSE_MISSING_PERMISSIONS: () => 'Вы не можете остановить воспроизведение треков. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_PAUSE_MISSING_PERMISSIONS: () => 'Вы не можете остановить воспроизведение треков. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_PAUSE_PAUSED: () => ':pause_button: **Плеер поставлен на паузу.**',
 
-            COMMAND_RESUME_MISSING_PERMISSIONS: () => 'Вы не можете возобновить воспроизведение треков. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_RESUME_MISSING_PERMISSIONS: () => 'Вы не можете возобновить воспроизведение треков. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_RESUME_RESUMED: () => ':arrow_forward: **Плеер снят с паузы.**',
 
-            COMMAND_VOLUME_MISSING_PERMISSIONS: () => 'Вы не можете изменить уровень громкости. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_VOLUME_MISSING_PERMISSIONS: () => 'Вы не можете изменить уровень громкости. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_VOLUME_PARAMS: () => 'Укажите уровень громкости **(от 0% до 100%)**.',
             COMMAND_VOLUME_CHANGED: (emoji, level) => `${emoji} Громкость установлена на **${level}%**`,
 
@@ -106,11 +109,11 @@ module.exports = class extends Language {
             COMMAND_VOTESKIP_VOTED: (votes, need) => `Вы проголосовали за пропуск текущего трека. Осталось еще ${votes} из ${need} голосов.`,
             COMMAND_VOTESKIP_SKIPPED: () => ':track_next: **Трек пропущен.**',
 
-            COMMAND_REMOVE_MISSING_PERMISSIONS: () => 'Вы не можете удалить этот трек из очереди. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_REMOVE_MISSING_PERMISSIONS: () => 'Вы не можете удалить этот трек из очереди. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_REMOVE_PARAMS: () => 'Укажите номер трека для его удаления из очереди.',
             COMMAND_REMOVE_REMOVED: (name) => `Трек **${name}** был удален из очереди.`,
 
-            COMMAND_LOOP_MISSING_PERMISSIONS: () => 'Вы не можете установить повторение треков. Попросите сделать это участника с ролью `Dj`',
+            COMMAND_LOOP_MISSING_PERMISSIONS: () => 'Вы не можете установить повторение треков. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_LOOP_PARAMS: () => 'Укажите режим повторения: **`off`, `single`, `queue`**',
             COMMAND_LOOP_DISABLED: () => '**Теперь плеер не будет повторять треки.**',
             COMMAND_LOOP_QUEUE: () => ':repeat: **Теперь плеер будет повторять всю очередь.**',
@@ -366,6 +369,7 @@ module.exports = class extends Language {
             STATS_DESCRIPTION: () => 'Показывает статистику бота',
 
             STOP_DESCRIPTION: () => 'Останавливает воспроизведение музыки для этого сервера.',
+            CLEAR_DESCRIPTION: () => 'Чистит всю очередь.',
 
             VK_USER_DESCRIPTION: () => 'Проигрывает указанное количество сохраненных треков пользователя VK',
             VK_USER_USER_DESCRIPTION: () => 'ID пользователя',

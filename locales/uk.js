@@ -75,6 +75,9 @@ module.exports = class extends Language {
             COMMAND_STOP_MISSING_PERMISSIONS: () => 'Ви не можете зупинити відтворення. Попросіть зробити це учасника з ролью `Dj`',
             COMMAND_STOP_STOPPED: () => ':stop_button: **Бот покинув голосовий канал.**',
 
+            COMMAND_CLEAR_MISSING_PERMISSIONS: () => 'Ви не можете почистити чергу. Попросіть зробити це учасника з ролью `Dj`.',
+            COMMAND_CLEAR_QUEUE_CLEARED: () => '☑️ **Черга почищена.**',
+
             COMMAND_SEEK_MISSING_PERMISSIONS: () => 'Ви не можете перемотати цей трек. Попросіть зробити це учасника з ролью `Dj`.',
             COMMAND_SEEK_PARAMS: () => 'Вкажіть позицію для перемотування.',
             COMMAND_SEEK_INVALID_POSITION: () => 'Вказано неправильну позицію для перемотування.',
@@ -366,6 +369,7 @@ module.exports = class extends Language {
             STATS_DESCRIPTION: () => 'Показує статистику бота.',
 
             STOP_DESCRIPTION: () => 'Зупиняє відтворення музики для цього сервера.',
+            CLEAR_DESCRIPTION: () => 'Чистить чергу.',
 
             VK_USER_DESCRIPTION: () => 'Програє вказану кількість збережених треків вказаного користувача в VK.',
             VK_USER_USER_DESCRIPTION: () => 'ID користувача',

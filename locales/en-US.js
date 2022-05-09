@@ -75,6 +75,9 @@ module.exports = class extends Language {
             COMMAND_STOP_MISSING_PERMISSIONS: () => 'You can\'t stop playback. Ask someone with `Dj` role to do it.',
             COMMAND_STOP_STOPPED: () => ':stop_button: **I left the channel.**',
 
+            COMMAND_CLEAR_MISSING_PERMISSIONS: () => 'You can\'t clear queue. Ask someone with `Dj` role to do it.',
+            COMMAND_CLEAR_QUEUE_CLEARED: () => '☑️ **The queue was cleared.**',
+
             COMMAND_SEEK_MISSING_PERMISSIONS: () => 'You can\'t rewind (fast forward) the track. Ask someone with `Dj` role to do it.',
             COMMAND_SEEK_PARAMS: () => 'Specify time-code to rewind (fast forward).',
             COMMAND_SEEK_INVALID_POSITION: () => 'An incorrect time-code was specified.',
@@ -367,6 +370,7 @@ module.exports = class extends Language {
             STATS_DESCRIPTION: () => 'Shows bot statistics.',
 
             STOP_DESCRIPTION: () => 'Stops music playback for this server.',
+            CLEAR_DESCRIPTION: () => 'Clears queue.', 
 
             VK_USER_DESCRIPTION: () => 'Plays the specified number of saved VK user tracks.',
             VK_USER_USER_DESCRIPTION: () => 'User ID',
