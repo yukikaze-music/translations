@@ -1,4 +1,5 @@
-const Language = require('@lib/structures/Language');
+const Language = require('@lib/structures/Language'),
+    { plural } = require('@lib/Utils');
 
 module.exports = class extends Language {
     constructor() {
@@ -18,7 +19,7 @@ module.exports = class extends Language {
 
             MISSING_PERMISSIONS: (err) => `Sorry, but I can't join channel, because of missing permission: \n\`${ err }\``,
          
-            QUEUE_LIMIT: (limit) => `You can't upload more than ${limit} tracks to the queue.`,
+            QUEUE_LIMIT: (limit) => `You can't upload more than ${limit} ${plural(limit, 'track', 'tracks', 'tracks')} to the queue.`,
             QUEUE_LIMIT_INFO: () => `⚠ Not all tracks were uploaded due to the limit on the maximum number of tracks in the queue.`,
 
             COMMAND_BASS_MISSING_PERMISSIONS: () => 'You can\'t use bass-boost. Ask someone with `Dj` role to do it.',
@@ -52,21 +53,21 @@ module.exports = class extends Language {
             },
             COMMAND_PLAY_LOAD_FAILED: () => 'An error occured while trying to load track.',
             COMMAND_PLAY_TRACK_LOADED: (provider, name) => `${provider} Track **${name}** has been added to the queue.`,
-            COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed) => `${provider} The playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** tracks).${failed && failed > 1 ? `\n${failed} tracks were not queued (they are not available in the country where the server is located` : ''}`,
+            COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed) => `${provider} The playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`,
             COMMAND_PLAY_NOW_PLAYING: (provider, name) => `${provider} **${name}** is playing now.`,
             COMMAND_PLAY_PLAYLIST_EMPTY: () => 'The playlist could not be loaded, because it is empty.',
             COMMAND_PLAY_PLAYLIST_PRIVACY: () => 'The playlist could not be loaded, because it is private.',
 
             COMMAND_NP_TITLE: (name) => `Tracks are currently being played for ${name}`,
             COMMAND_NP_LAST_TRACK: () => '••• The last track is playing now.',
-            COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} tracks in the queue..`,
+            COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} ${plural(count, 'track', 'tracks', 'tracks')} in the queue..`,
             COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length) => `Now playing **[${np.info.title}](${np.info.uri})**\nRequested by: <@${np.info.requested}>\n\nVolume: ${volume}%\n${bar}\n\`${position} / ${length}\``,
             COMMAND_NP_UPDATE: () => 'Update',
             COMMAND_NP_LYRICS: () => 'Lyrics',
 
             COMMAND_QUEUE_NOW_PLAYING: (title) => `Now playing: ${title}`,
             COMMAND_QUEUE_TITLE: (guild) => `Queue for ${guild}`,
-            COMMAND_QUEUE_FOOTER: (page, length) => `••• Page: ${page} • ${length} tracks left`,
+            COMMAND_QUEUE_FOOTER: (page, length) => `••• Page: ${page} • ${length} ${plural(length, 'track', 'tracks', 'tracks')} left`,
 
             COMMAND_SKIP_MISSING_PERMISSIONS: (user) => `You can't skip this track. Ask <@${user}> to do it.`,
             COMMAND_SKIP_SKIPPED: () => ':track_next: **Track skipped.**',
@@ -118,8 +119,8 @@ module.exports = class extends Language {
             COMMAND_PP_PLAYLIST_NAME: () => 'Specify the name of the playlist..',
             COMMAND_PP_INVALID_PLAYLIST: () => 'The specified playlist wasn\'t found.',
             COMMAND_PP_PLAYLIST_EMPTY: () => 'This playlist is empty.',
-            COMMAND_PP_PLAYLIST_LOADED: (provider, name, count) => `${provider} Playlist **${name}** is loaded (**\`${count}\`** tracks).`,
-            COMMAND_PP_PUBLIC_LOADED: (provider, name, count) => `${provider} Public playlist **${name}** is loaded (**\`${count}\`** tracks).`,
+            COMMAND_PP_PLAYLIST_LOADED: (provider, name, count) => `${provider} Playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`,
+            COMMAND_PP_PUBLIC_LOADED: (provider, name, count) => `${provider} Public playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`,
 
             COMMAND_MYLIST_EMPTY: () => 'You don\'t have playlists yet.',
             COMMAND_MYLIST_TITLE: () => 'Playlist list',
@@ -148,7 +149,7 @@ module.exports = class extends Language {
 
             COMMAND_DELETE_PLAYLIST_NAME: () => 'Specify playlist\'s name.',
             COMMAND_DELETE_INVALID_PLAYLIST: () => 'The specified playlist wasn\'t found.',
-            COMMAND_DELETE_CONFIRMATION: (name, count) => `Are you sure you want to delete playlist **${name}** with **${count}** tracks?`,
+            COMMAND_DELETE_CONFIRMATION: (name, count) => `Are you sure you want to delete playlist **${name}** with **${count}** ${plural(count, 'track', 'tracks', 'tracks')}?`,
             COMMAND_DELETE_CONFIRMED: (name) => `Playlist **${name}** has been deleted.`,
             COMMAND_DELETE_CANCELLED: () => 'Playlist wasn\'t deleted.',
 
@@ -268,7 +269,7 @@ module.exports = class extends Language {
 
             COMMAND_VK_USER_USER_NOT_FOUND: () => 'The user was not found, please check the id.',
             COMMAND_VK_USER_TRACKS_NOT_LOADED: () => 'Unable to load tracks, please change your privacy settings.',
-            COMMAND_VK_USER_LOADED: (provider, name, size, failed) => `${provider} Playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** tracks).${failed && failed > 1 ? `\n${failed} tracks were not queued (they are not available in the country where the server is located` : ''}`,
+            COMMAND_VK_USER_LOADED: (provider, name, size, failed) => `${provider} Playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`,
             COMMAND_VK_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
             COMMAND_SOUNDCLOUD_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
             COMMAND_YANDEX_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',

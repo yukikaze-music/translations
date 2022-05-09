@@ -1,4 +1,5 @@
-const Language = require('@lib/structures/Language');
+const Language = require('@lib/structures/Language'),
+    { plural } = require('@lib/Utils');
 
 module.exports = class extends Language {
     constructor() {
@@ -18,7 +19,7 @@ module.exports = class extends Language {
 
             MISSING_PERMISSIONS: (err) => `У бота недостатньо прав для виконання команди:\n\`${ err }\``,
          
-            QUEUE_LIMIT: (limit) => `Ви не можете додати більше ${limit} треків у чергу.`,
+            QUEUE_LIMIT: (limit) => `Ви не можете додати більше ${limit} ${plural(limit, 'трек', 'треки', 'треків')} у чергу.`,
             QUEUE_LIMIT_INFO: () => `⚠ Не всі треки були завантажені через обмеження максимальної кількості треків у черзі.`,
 
             COMMAND_BASS_MISSING_PERMISSIONS: () => 'Ви не можете встановити бас-буст. Попросіть зробити це учасника з ролью `Dj`',
@@ -52,21 +53,21 @@ module.exports = class extends Language {
             },
             COMMAND_PLAY_LOAD_FAILED: () => 'Сталася помилка під час завантаження треку.',
             COMMAND_PLAY_TRACK_LOADED: (provider, name) => `${provider} Трек **${name}** був доданий у чергу.`,
-            COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed) => `${provider} Плейлист **\`${name || 'Невідомий плейлист'}\`** завантажений у чергу (**\`${size}\`** треків).${failed && failed > 1 ? `\n${failed} треків не було завантажено (у країні розташування сервера вони недоступні). ` : ''}`,
+            COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed) => `${provider} Плейлист **\`${name || 'Невідомий плейлист'}\`** завантажений у чергу (**\`${size}\`** ${plural(size, 'трек', 'треки', 'треків')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'треки', 'треків')} не було завантажено (у країні розташування сервера вони недоступні). ` : ''}`,
             COMMAND_PLAY_NOW_PLAYING: (provider, name) => `${provider} Зараз грає **${name}**.`,
             COMMAND_PLAY_PLAYLIST_EMPTY: () => 'Не вдалося завантажити плейлист, бо він порожній.',
             COMMAND_PLAY_PLAYLIST_PRIVACY: () => 'Не вдалося завантажити плейлист, бо він приватний.',
 
             COMMAND_NP_TITLE: (name) => `Наразі програються треки для ${name}`,
             COMMAND_NP_LAST_TRACK: () => '••• Грає останній трек',
-            COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} треків у черзі..`,
+            COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} ${plural(count, 'трек', 'треки', 'треків')} у черзі..`,
             COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length) => `Зараз грає **[${np.info.title}](${np.info.uri})**\nДоданий: <@${np.info.requested}>\n\nГучність: ${volume}%\n${bar}\n\`${position} / ${length}\``,
             COMMAND_NP_UPDATE: () => 'Оновити',
             COMMAND_NP_LYRICS: () => 'Текст',
 
             COMMAND_QUEUE_NOW_PLAYING: (title) => `Зараз грає: ${title}`,
             COMMAND_QUEUE_TITLE: (guild) => `Черга сервера ${guild}`,
-            COMMAND_QUEUE_FOOTER: (page, length) => `••• Сторінка: ${page} • ${length} треків лишилося`,
+            COMMAND_QUEUE_FOOTER: (page, length) => `••• Сторінка: ${page} • ${length} ${plural(length, 'трек лишився', 'треки лишилося', 'треків лишилося')}`,
 
             COMMAND_SKIP_MISSING_PERMISSIONS: (user) => `Ви не можете пропустити цей трек, попросіть  <@${user}> зробити це.`,
             COMMAND_SKIP_SKIPPED: () => ':track_next: **Трек пропущено.**',
@@ -118,8 +119,8 @@ module.exports = class extends Language {
             COMMAND_PP_PLAYLIST_NAME: () => 'Вкажіть назву плейлиста.',
             COMMAND_PP_INVALID_PLAYLIST: () => 'Вказаний плейлист не знайдено.',
             COMMAND_PP_PLAYLIST_EMPTY: () => 'Вказаний плейлист порожній.',
-            COMMAND_PP_PLAYLIST_LOADED: (provider, name, count) => `${provider} Плейлист **${name}** завантажено (**\`${count}\`** треків).`,
-            COMMAND_PP_PUBLIC_LOADED: (provider, name, count) => `${provider} Публічний плейлист **${name}** завантажено (**\`${count}\`** треків).`,
+            COMMAND_PP_PLAYLIST_LOADED: (provider, name, count) => `${provider} Плейлист **${name}** завантажено (**\`${count}\`** ${plural(count, 'трек', 'треки', 'треків')}).`,
+            COMMAND_PP_PUBLIC_LOADED: (provider, name, count) => `${provider} Публічний плейлист **${name}** завантажено (**\`${count}\`** ${plural(count, 'трек', 'треки', 'треків')}).`,
 
             COMMAND_MYLIST_EMPTY: () => 'У вас ще немає плейлистів.',
             COMMAND_MYLIST_TITLE: () => 'Список ваших плейлистів',
@@ -148,7 +149,7 @@ module.exports = class extends Language {
 
             COMMAND_DELETE_PLAYLIST_NAME: () => 'Вкажіть назву плейлиста.',
             COMMAND_DELETE_INVALID_PLAYLIST: () => 'Вказаний плейлист не знайдено.',
-            COMMAND_DELETE_CONFIRMATION: (name, count) => `Ви дійсно хочете видалити плейлист **${name}**, у якому **${count}** треків?`,
+            COMMAND_DELETE_CONFIRMATION: (name, count) => `Ви дійсно хочете видалити плейлист **${name}**, у якому **${count}** ${plural(count, 'трек', 'треки', 'треків')}?`,
             COMMAND_DELETE_CONFIRMED: (name) => `Плейлист **${name}** був видалений.`,
             COMMAND_DELETE_CANCELLED: () => 'Плейлист не був видалений.',
 
@@ -223,7 +224,7 @@ module.exports = class extends Language {
             LIVEPLAYER_FAVORITE_PLAYLISTS_EMPTY: () => 'Ви не можете додати трек до плейлисту, тому що у вас їх немає, або вони заповнені',
             LIVEPLAYER_FAVORITE_SELECT_PLAYLIST: () => 'Виберіть плейлист, до якого хочете додати поточний трек',
             LIVEPLAYER_FAVORITE_SELECT_PLACEHOLDER: () => 'Не вибрано',
-            LIVEPLAYER_FAVORITE_PLAYLIST_DESCRIPTION: (songs) => `Має ${songs.length} треків`,
+            LIVEPLAYER_FAVORITE_PLAYLIST_DESCRIPTION: (songs) => `Має ${songs.length} ${plural(songs.length, 'трек', 'треки', 'треків')}`,
             LIVEPLAYER_FAVORITE_TRACK_NOT_ADDED: () => 'Трек не був доданий у плейлист',
             LIVEPLAYER_REMOVE_EMPTY_QUEUE: () => 'Неможливо вилучити треки з черги, бо вона порожня.',
             LIVEPLAYER_REMOVE_SELECT_TRACK: () => 'Виберіть трек, який потрібно вилучити.',
@@ -267,7 +268,7 @@ module.exports = class extends Language {
 
             COMMAND_VK_USER_USER_NOT_FOUND: () => 'Користувач не був знайдений, перевірте вказаний айді.',
             COMMAND_VK_USER_TRACKS_NOT_LOADED: () => 'Не вдалося завантажити треки, спробуйте змінити налаштування приватності.',
-            COMMAND_VK_USER_LOADED: (provider, name, size, failed) => `${provider} Плейлист **\`${name || 'Невідомий плейлист'}\`** завантажений у чергу (**\`${size}\`** треків).${failed && failed > 1 ? `\n${failed} треків не було завантажено (у країні розташування сервера вони недоступні). ` : ''}`,
+            COMMAND_VK_USER_LOADED: (provider, name, size, failed) => `${provider} Плейлист **\`${name || 'Невідомий плейлист'}\`** завантажений у чергу (**\`${size}\`** ${plural(size, 'трек', 'треки', 'треків')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'треки', 'треків')} не було завантажено (у країні розташування сервера вони недоступні). ` : ''}`,
             COMMAND_VK_SEARCH_NO_MATCHES: () => 'По вашому запиту нічого не знайдено.',
             COMMAND_SOUNDCLOUD_SEARCH_NO_MATCHES: () => 'По вашому запиту нічого не знайдено.',
             COMMAND_YANDEX_SEARCH_NO_MATCHES: () => 'По вашому запиту нічого не знайдено.',
