@@ -247,7 +247,7 @@ module.exports = class extends Language {
             COMMAND_FILTERS_CLEAR_MISSING_PERMISSIONS: () => 'You can\'t reset the effects parameters. Ask someone with `Dj` role to do it.',
             COMMAND_FILTERS_CLEAR_CLEARED: () => 'The effects parameters have been successfully reset.',
 
-            COMMAND_STATS_INFORMATION: (guilds, users, memoryUsage, shardId, totalMem) => `Guilds: \`${guilds}\`\nUsers: \`${users}\`\nMemory usage: \`${memoryUsage} / ${totalMem} GB\`\n\n**The guild is on a shard \`#${shardId}\`**`,
+            COMMAND_STATS_INFORMATION: (guilds, users, memoryUsage, shardId, totalMem) => `Guilds: \`${guilds}\`\nUsers: \`${users}\`\nMemory usage: \`${memoryUsage} MB\`\n\n**The guild is on a shard \`#${shardId}\`**`,
             COMMAND_STATS_MUSIC_NODE_INFORMATION: (players, playingPlayers, memoryUsage, uptime) => `Players: \`${players}\`\nPlaying players: \`${playingPlayers}\`\nMemory usage: \`${memoryUsage} MB\`\n **Launched <t:${uptime}:R>**`,
 
             COMMAND_LYRICS_TRACK_NOT_FOUND: () => 'Nothing was found.',

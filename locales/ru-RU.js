@@ -246,7 +246,7 @@ module.exports = class extends Language {
             COMMAND_FILTERS_CLEAR_MISSING_PERMISSIONS: () => 'Вы не можете сбросить параметры эффектов. Попросите сделать это участника с ролью `Dj`',
             COMMAND_FILTERS_CLEAR_CLEARED: () => 'Параметры эффектов были успешно сброшены.',
 
-            COMMAND_STATS_INFORMATION: (guilds, users, memoryUsage, shardId, totalMem) => `Серверов: \`${guilds}\`\nПользователей: \`${users}\`\nИспользуется памяти: \`${memoryUsage} / ${totalMem} GB\`\n\n**Сервер находится на шарде \`#${shardId}\`**`,
+            COMMAND_STATS_INFORMATION: (guilds, users, memoryUsage, shardId) => `Серверов: \`${guilds}\`\nПользователей: \`${users}\`\nИспользуется памяти: \`${memoryUsage} MB\`\n\n**Сервер находится на шарде \`#${shardId}\`**`,
             COMMAND_STATS_MUSIC_NODE_INFORMATION: (players, playingPlayers, memoryUsage, uptime) => `Всего плееров: \`${players}\`\nИграет: \`${playingPlayers}\`\nИспользуется памяти: \`${memoryUsage} MB\`\n **Запущено <t:${uptime}:R>**`,
 
             COMMAND_LYRICS_TRACK_NOT_FOUND: () => 'Не удалось найти песню.',

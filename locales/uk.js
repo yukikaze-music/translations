@@ -246,7 +246,7 @@ module.exports = class extends Language {
             COMMAND_FILTERS_CLEAR_MISSING_PERMISSIONS: () => 'Ви не можете скинути параметри фільтрів. Попросіть зробити це учасника з ролью `Dj`.',
             COMMAND_FILTERS_CLEAR_CLEARED: () => 'Усі параметри фільтрів було очищено',
 
-            COMMAND_STATS_INFORMATION: (guilds, users, memoryUsage, shardId, totalMem) => `Серверів: \`${guilds}\`\nКористувачів: \`${users}\`\nВикористовується пам'яті: \`${memoryUsage} / ${totalMem} GB\`\n\n**Сервер знаходиться на шарді \`#${shardId}\`**`,
+            COMMAND_STATS_INFORMATION: (guilds, users, memoryUsage, shardId) => `Серверів: \`${guilds}\`\nКористувачів: \`${users}\`\nВикористовується пам'яті: \`${memoryUsage} MB\`\n\n**Сервер знаходиться на шарді \`#${shardId}\`**`,
             COMMAND_STATS_MUSIC_NODE_INFORMATION: (players, playingPlayers, memoryUsage, uptime) => `Усього плеєрів: \`${players}\`\nГрає: \`${playingPlayers}\`\nВикористовується пам'яті: \`${memoryUsage} MB\`\n **Запущено <t:${uptime}:R>**`,
 
             COMMAND_LYRICS_TRACK_NOT_FOUND: () => 'Не вдалось знайти пісню.',
