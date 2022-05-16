@@ -127,7 +127,7 @@ module.exports = class extends Language {
 
             COMMAND_MYLIST_EMPTY: () => 'You don\'t have playlists yet.',
             COMMAND_MYLIST_TITLE: () => 'Playlist list',
-            COMMAND_MYLIST_INFO: (tracks, type, created) => `Total tracks: \`${tracks}\`\nType: \`${type}\`\nCreated at: ${created}`,
+            COMMAND_MYLIST_INFO: (tracks, type, created, id) => `Total tracks: \`${tracks}\`\nType: \`${type}\`\nCreated at: ${created}\n**[Open](https://lolicon.su/playlist/${id})**`,
 
             COMMAND_PLAYLIST_NAME: () => 'Specify the name of the playlist.',
             COMMAND_PLAYLIST_INVALID_PLAYLIST: () => 'The specified playlist wasn\'t found.',

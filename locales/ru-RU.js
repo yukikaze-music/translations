@@ -127,7 +127,7 @@ module.exports = class extends Language {
 
             COMMAND_MYLIST_EMPTY: () => 'У вас еще нет плейлистов.',
             COMMAND_MYLIST_TITLE: () => 'Список ваших плейлистов',
-            COMMAND_MYLIST_INFO: (tracks, type, created) => `Всего треков: \`${tracks}\`\nТип: \`${type}\`\nСоздан: ${created}`,
+            COMMAND_MYLIST_INFO: (tracks, type, created, id) => `Всего треков: \`${tracks}\`\nТип: \`${type}\`\nСоздан: ${created}\n**[Открыть](https://lolicon.su/playlist/${id})**`,
 
             COMMAND_PLAYLIST_NAME: () => 'Укажите название плейлиста.',
             COMMAND_PLAYLIST_INVALID_PLAYLIST: () => 'Указанный плейлист не найден.',
