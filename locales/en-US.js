@@ -14,9 +14,8 @@ module.exports = class extends Language {
             NO_MATCHES: () => 'Nothing was found for your query.',
             LOAD_FAILED: () => 'Track load failed, skipping it.',
             
-            PLAYER_CREATE_RETRYING: () => 'The voice connection attempt failed. Retrying...',
             PLAYER_CREATE_FAILED: () => 'The voice connection attempt failed.',
-            PLAYER_RECONNECTING: () => 'The connection was reset because an unknown error occurred. Reconnecting, please wait...',
+            PLAYER_DISCONNECTED: () => 'The connection was dropped because an unknown error occurred during playback or I was disconnected from the voice channel.',
 
             MISSING_PERMISSIONS: (err) => `Sorry, but I can't join channel, because of missing permission: \n\`${ err }\``,
          
