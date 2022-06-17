@@ -388,7 +388,22 @@ module.exports = class extends Language {
             YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Запит',
 
             COMMAND_ZVUK_SEARCH_DESCRIPTION: () => 'Шукає треки на платформі Zvuk',
-            COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запит'
+            COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запит',
+
+            COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Уся зібрана аналітика на цьому сервері була успішно скинута.',
+            COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Збір аналітики ${isEnabled ? 'включений' : 'відключений'} на цьому сервері.`,
+
+            COMMAND_ANALYTICS_TITLE: () => 'Інформація про прослухані треки на цьому сервері',
+            COMMAND_ANALYTICS_LISTENED: () => '**Історія прослуховувань:**\n',
+            COMMAND_ANALYTICS_TOP: () => 'Найчастіше прослуховуються:',
+            COMMAND_ANALYTICS_INFO: (size, length) => `Усього на цьому сервері прослухали ${size} ${plural(size, 'трек', 'треки', 'треків')} загальною довжиною ${length}.`,
+            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](https://lolicon.su)** був прослуханий **${track.count} разів**`,
+
+            COMMAND_ANALYTICS_DESCRIPTION: () => 'Відображає список треків, які слухали на цьому сервері.',
+            COMMAND_SETTINGS_ANALYTICS_DESCRIPTION: () => 'Керує параметрами аналітики',
+            COMMAND_SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Включає або відключає збір аналітики',
+            COMMAND_SETTINGS_ANALYTICS_STATUS_STATE_DESCRIPTION: () => 'Стан',
+            COMMAND_SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Скидає всі зібрані дані аналітики на цьому сервері'
         }
     }
 }

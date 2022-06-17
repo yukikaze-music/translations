@@ -389,7 +389,22 @@ module.exports = class extends Language {
             YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Query',
 
             COMMAND_ZVUK_SEARCH_DESCRIPTION: () => 'Search tracks on Zvuk',
-            COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Query'
+            COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Query',
+
+            COMMAND_SETTINGS_ANALYTICS_RESET: () => 'All collected analytics on this server were successfully reset.',
+            COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Analytics collection is ${isEnabled ? 'enabled' : 'disabled'} on this server.`,
+
+            COMMAND_ANALYTICS_TITLE: () => 'Information about listened tracks on this server',
+            COMMAND_ANALYTICS_LISTENED: () => '**Listened:**\n',
+            COMMAND_ANALYTICS_TOP: () => 'Most popular tracks:',
+            COMMAND_ANALYTICS_INFO: (size, length) => `In total on this server listened ${size} ${plural(size, 'track', 'tracks', 'tracks')} with a total length of ${length}.`,
+            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](https://lolicon.su)** was listened **${track.count} times**`,
+
+            COMMAND_ANALYTICS_DESCRIPTION: () => 'Displays a list of tracks that have been listened to on this server',
+            COMMAND_SETTINGS_ANALYTICS_DESCRIPTION: () => 'Manages analytics settings',
+            COMMAND_SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Enables or disables analytics collection',
+            COMMAND_SETTINGS_ANALYTICS_STATUS_STATE_DESCRIPTION: () => 'State',
+            COMMAND_SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Resets all collected analytics data on this server'
         }
     }
 }
