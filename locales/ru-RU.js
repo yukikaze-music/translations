@@ -398,7 +398,7 @@ module.exports = class extends Language {
             COMMAND_ANALYTICS_LISTENED: () => '**История прослушиваний:**\n',
             COMMAND_ANALYTICS_TOP: () => 'Наиболее часто прослушиваемые:',
             COMMAND_ANALYTICS_INFO: (size, length) => `Всего на этом сервере прослушали ${size} ${plural(size, 'трек', 'трека', 'треков')} общей длиной ${length}.`,
-            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](https://lolicon.su)** был прослушан **${track.count} раз**`,
+            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](https://lolicon.su)** был прослушан **${track.count} ${plural(track.count, 'раз', 'раза', 'раз')}**`,
 
             COMMAND_ANALYTICS_DESCRIPTION: () => 'Показывает список треков, которые слушали на этом сервере.',
             COMMAND_SETTINGS_ANALYTICS_DESCRIPTION: () => 'Управляет параметрами аналитики',
