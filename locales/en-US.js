@@ -16,6 +16,7 @@ module.exports = class extends Language {
             
             PLAYER_CREATE_RETRYING: () => 'The voice connection attempt failed. Retrying...',
             PLAYER_CREATE_FAILED: () => 'The voice connection attempt failed.',
+            PLAYER_RECONNECTING: () => 'The connection was reset because an unknown error occurred. Reconnecting, please wait...',
 
             MISSING_PERMISSIONS: (err) => `Sorry, but I can't join channel, because of missing permission: \n\`${ err }\``,
          
