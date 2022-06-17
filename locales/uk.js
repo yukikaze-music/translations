@@ -398,7 +398,7 @@ module.exports = class extends Language {
             COMMAND_ANALYTICS_LISTENED: () => '**Історія прослуховувань:**\n',
             COMMAND_ANALYTICS_TOP: () => 'Найчастіше прослуховуються:',
             COMMAND_ANALYTICS_INFO: (size, length) => `Усього на цьому сервері прослухали ${size} ${plural(size, 'трек', 'треки', 'треків')} загальною довжиною ${length}.`,
-            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](https://lolicon.su)** був прослуханий **${track.count} ${plural(track.count, 'раз', 'рази', 'разів')}**`,
+            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** був прослуханий **${track.count} ${plural(track.count, 'раз', 'рази', 'разів')}**`,
 
             COMMAND_ANALYTICS_DESCRIPTION: () => 'Відображає список треків, які слухали на цьому сервері.',
             COMMAND_SETTINGS_ANALYTICS_DESCRIPTION: () => 'Керує параметрами аналітики',

@@ -399,7 +399,7 @@ module.exports = class extends Language {
             COMMAND_ANALYTICS_LISTENED: () => '**Listened:**\n',
             COMMAND_ANALYTICS_TOP: () => 'Most popular tracks:',
             COMMAND_ANALYTICS_INFO: (size, length) => `In total on this server listened ${size} ${plural(size, 'track', 'tracks', 'tracks')} with a total length of ${length}.`,
-            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](https://lolicon.su)** was listened **${track.count} times**`,
+            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** was listened **${track.count} times**`,
 
             COMMAND_ANALYTICS_DESCRIPTION: () => 'Displays a list of tracks that have been listened to on this server',
             COMMAND_SETTINGS_ANALYTICS_DESCRIPTION: () => 'Manages analytics settings',
