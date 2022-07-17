@@ -52,9 +52,66 @@ module.exports = class extends Language {
                     return 'The playlist could not be loaded because the tracks it contains are not available in the country where the server is located.';
             },
             COMMAND_PLAY_LOAD_FAILED: () => 'An error occured while trying to load track.',
-            COMMAND_PLAY_TRACK_LOADED: (provider, name) => `${provider} Track **${name}** has been added to the queue.`,
-            COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed) => `${provider} The playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`,
-            COMMAND_PLAY_NOW_PLAYING: (provider, name) => `${provider} **${name}** is playing now.`,
+            COMMAND_PLAY_TRACK_LOADED: (provider, name, queueMode) => {
+                let res = `${provider} Track **${name}** has been added to the queue.`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nQueue mode modifier detected, music player has been looped.';
+                        break;
+
+                    case 'queue':
+                        res += '\nQueue mode modifier detected, music player\'s queue was looped.';
+                        break;
+
+                    case 'disable':
+                        res += '\nQueue mode modifier detected, queue loop is disabled.';
+                        break;
+                }
+
+                return res;
+            },
+            
+            COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed, queueMode) => {
+                let res = `${provider} The playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nQueue mode modifier detected, music player has been looped.';
+                        break;
+
+                    case 'queue':
+                        res += '\nQueue mode modifier detected, music player\'s queue was looped.';
+                        break;
+
+                    case 'disable':
+                        res += '\nQueue mode modifier detected, queue loop is disabled.';
+                        break;
+                }
+
+                return res;
+            },
+
+            COMMAND_PLAY_NOW_PLAYING: (provider, name, queueMode) => {
+                let res = `${provider} **${name}** is playing now.`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nQueue mode modifier detected, music player has been looped.';
+                        break;
+
+                    case 'queue':
+                        res += '\nQueue mode modifier detected, music player\'s queue was looped.';
+                        break;
+
+                    case 'disable':
+                        res += '\nQueue mode modifier detected, queue loop is disabled.';
+                        break;
+                }
+
+                return res;
+            },
+
             COMMAND_PLAY_PLAYLIST_EMPTY: () => 'The playlist could not be loaded, because it is empty.',
             COMMAND_PLAY_PLAYLIST_PRIVACY: () => 'The playlist could not be loaded, because it is private.',
 
@@ -122,8 +179,45 @@ module.exports = class extends Language {
             COMMAND_PP_PLAYLIST_NAME: () => 'Specify the name of the playlist..',
             COMMAND_PP_INVALID_PLAYLIST: () => 'The specified playlist wasn\'t found.',
             COMMAND_PP_PLAYLIST_EMPTY: () => 'This playlist is empty.',
-            COMMAND_PP_PLAYLIST_LOADED: (provider, name, count) => `${provider} Playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`,
-            COMMAND_PP_PUBLIC_LOADED: (provider, name, count) => `${provider} Public playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`,
+            COMMAND_PP_PLAYLIST_LOADED: (provider, name, count, queueMode) => {
+                let res = `${provider} Playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nQueue mode modifier detected, music player has been looped.';
+                        break;
+
+                    case 'queue':
+                        res += '\nQueue mode modifier detected, music player\'s queue was looped.';
+                        break;
+
+                    case 'disable':
+                        res += '\nQueue mode modifier detected, queue loop is disabled.';
+                        break;
+                }
+
+                return res;
+            },
+
+            COMMAND_PP_PUBLIC_LOADED: (provider, name, count, queueMode) => {
+                let res = `${provider} Public playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nQueue mode modifier detected, music player has been looped.';
+                        break;
+
+                    case 'queue':
+                        res += '\nQueue mode modifier detected, music player\'s queue was looped.';
+                        break;
+
+                    case 'disable':
+                        res += '\nQueue mode modifier detected, queue loop is disabled.';
+                        break;
+                }
+
+                return res;
+            },
 
             COMMAND_MYLIST_EMPTY: () => 'You don\'t have playlists yet.',
             COMMAND_MYLIST_TITLE: () => 'Playlist list',
@@ -272,15 +366,33 @@ module.exports = class extends Language {
 
             COMMAND_VK_USER_USER_NOT_FOUND: () => 'The user was not found, please check the id.',
             COMMAND_VK_USER_TRACKS_NOT_LOADED: () => 'Unable to load tracks, please change your privacy settings.',
-            COMMAND_VK_USER_LOADED: (provider, name, size, failed) => `${provider} Playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`,
+            COMMAND_VK_USER_LOADED: (provider, name, size, failed, queueMode) => {
+                let res = `${provider} Playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nQueue mode modifier detected, music player has been looped.';
+                        break;
+
+                    case 'queue':
+                        res += '\nQueue mode modifier detected, music player\'s queue was looped.';
+                        break;
+
+                    case 'disable':
+                        res += '\nQueue mode modifier detected, queue loop is disabled.';
+                        break;
+                }
+
+                return res;
+            },
+
             COMMAND_VK_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
             COMMAND_SOUNDCLOUD_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
             COMMAND_YANDEX_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
+            COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Server settings for ${name}`,
             COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Language: **\`${language}\`**\nDJ role: ${djRoleID ? `<@&${djRoleID}>` : '**\`Not installed\`**'}\nLiveplayer: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Not installed\`**'}`,
-
-            COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
 
             FILTERS_INFO_DESCRIPTION: () => 'Shows effect options.',
             FILTERS_CLEAR_DESCRIPTION: () => 'Resets all set effect parameters.',
@@ -305,6 +417,7 @@ module.exports = class extends Language {
 
             PLAY_DESCRIPTION: () => 'Searches for a track for the specified query or link.',
             PLAY_QUERY_DESCRIPTION: () => 'Query',
+            PLAY_MODE_DESCRIPTION: () => 'Queue repeat mode',
 
             PREMIUM_ACTIVATE_DESCRIPTION: () => 'Activates a premium subscription on the server.',
             PREMIUM_INFO_DESCRIPTION: () => 'Shows subscription information.',
@@ -316,6 +429,7 @@ module.exports = class extends Language {
             PLAYLIST_DELETE_NAME_DESCRIPTION: () => 'Playlist name',
             PLAYLIST_PLAY_DESCRIPTION: () => 'Plays the specified playlist.',
             PLAYLIST_PLAY_NAME_DESCRIPTION: () => 'Playlist name',
+            PLAYLIST_PLAY_MODE_DESCRIPTION: () => 'Queue repeat mode',
             PLAYLIST_INFO_DESCRIPTION: () => 'Shows the list of tracks in your playlist.',
             PLAYLIST_INFO_NAME_DESCRIPTION: () => 'Playlist name',
             PLAYLIST_INFO_PAGE_DESCRIPTION: () => 'Page',
@@ -349,6 +463,7 @@ module.exports = class extends Language {
 
             SOUNDCLOUD_SEARCH_DESCRIPTION: () => 'Search tracks on SoundCloud',
             SOUNDCLOUD_SEARCH_QUERY_DESCRIPTION: () => 'Query',
+            SOUNDCLOUD_SEARCH_MODE_DESCRIPTION: () => 'Queue repeat mode',
 
             SEEK_DESCRIPTION: () => 'Rewinds the track to the specified position.',
             SEEK_TIME_DESCRIPTION: () => 'Time',
@@ -376,9 +491,11 @@ module.exports = class extends Language {
             VK_USER_USER_DESCRIPTION: () => 'User ID',
             VK_USER_COUNT_DESCRIPTION: () => 'Number of tracks',
             VK_USER_OFFSET_DESCRIPTION: () => 'Start position',
+            VK_USER_MODE_DESCRIPTION: () => 'Queue repeat mode',
 
             VK_SEARCH_DESCRIPTION: () => 'Search tracks on VK.',
             VK_SEARCH_QUERY_DESCRIPTION: () => 'Query',
+            VK_SEARCH_MODE_DESCRIPTION: () => 'Queue repeat mode',
 
             VOLUME_DESCRIPTION: () => 'Changes the volume level for this server.',
             VOLUME_LEVEL_DESCRIPTION: () => 'Volume level',
@@ -387,9 +504,11 @@ module.exports = class extends Language {
 
             YANDEX_SEARCH_DESCRIPTION: () => 'Search tracks on Yandex.Music.',
             YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Query',
+            YANDEX_SEARCH_MODE_DESCRIPTION: () => 'Queue repeat mode',
 
-            COMMAND_ZVUK_SEARCH_DESCRIPTION: () => 'Search tracks on Zvuk',
-            COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Query',
+            ZVUK_SEARCH_DESCRIPTION: () => 'Search tracks on Zvuk',
+            ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Query',
+            ZVUK_MODE_DESCRIPTION: () => 'Queue repeat mode',
 
             COMMAND_SETTINGS_ANALYTICS_RESET: () => 'All collected analytics on this server were successfully reset.',
             COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Analytics collection is ${isEnabled ? 'enabled' : 'disabled'} on this server.`,

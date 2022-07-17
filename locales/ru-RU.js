@@ -51,10 +51,68 @@ module.exports = class extends Language {
                 else
                     return 'Не удалось загрузить плейлист, потому что треки, которые находятся в нем, недоступны в стране расположения сервера.';
             },
+
             COMMAND_PLAY_LOAD_FAILED: () => 'Произошла ошибка при загрузке трека.',
-            COMMAND_PLAY_TRACK_LOADED: (provider, name) => `${provider} Трек **${name}** был добавлен в очередь.`,
-            COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed) => `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** ${plural(size, 'трек', 'трека', 'треков')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'трека', 'треков')} не было загружено (в стране расположения сервера они недоступны). ` : ''}`,
-            COMMAND_PLAY_NOW_PLAYING: (provider, name) => `${provider} Сейчас играет **${name}**`,
+            COMMAND_PLAY_TRACK_LOADED: (provider, name, queueMode)  => {
+                let res = `${provider} Трек **${name}** был добавлен в очередь.`;
+
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор текущего трека.';
+                        break;
+
+                    case 'queue':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор всей очереди.';
+                        break;
+
+                    case 'disable':
+                        res += '\nОбнаружен модификатор режима очереди, отключаю режим повтора.';
+                        break;
+                }
+
+                return res;
+            },
+
+            COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed, queueMode) => {
+                let res = `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** ${plural(size, 'трек', 'трека', 'треков')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'трека', 'треков')} не было загружено (в стране расположения сервера они недоступны). ` : ''}`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор текущего трека.';
+                        break;
+
+                    case 'queue':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор всей очереди.';
+                        break;
+
+                    case 'disable':
+                        res += '\nОбнаружен модификатор режима очереди, отключаю режим повтора.';
+                        break;
+                }
+
+                return res;
+            },
+
+            COMMAND_PLAY_NOW_PLAYING: (provider, name, queueMode) => {
+                let res = `${provider} Сейчас играет **${name}**`;
+
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор текущего трека.';
+                        break;
+
+                    case 'queue':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор всей очереди.';
+                        break;
+
+                    case 'disable':
+                        res += '\nОбнаружен модификатор режима очереди, отключаю режим повтора.';
+                        break;
+                }
+
+                return res;
+            },
+
             COMMAND_PLAY_PLAYLIST_EMPTY: () => 'Не удалось загрузить плейлист, потому что он пустой.',
             COMMAND_PLAY_PLAYLIST_PRIVACY: () => 'Не удалось загрузить плейлист, потому что он приватный.',
 
@@ -122,8 +180,45 @@ module.exports = class extends Language {
             COMMAND_PP_PLAYLIST_NAME: () => 'Укажите название плейлиста.',
             COMMAND_PP_INVALID_PLAYLIST: () => 'Указанный плейлист не был найден.',
             COMMAND_PP_PLAYLIST_EMPTY: () => 'Указанный плейлист пустой.',
-            COMMAND_PP_PLAYLIST_LOADED: (provider, name, count) => `${provider} Плейлист **${name}** загружен (**\`${count}\`** ${plural(count, 'трек', 'трека', 'треков')}).`,
-            COMMAND_PP_PUBLIC_LOADED: (provider, name, count) => `${provider} Публичный плейлист **${name}** загружен (**\`${count}\`** ${plural(count, 'трек', 'трека', 'треков')}).`,
+            COMMAND_PP_PLAYLIST_LOADED: (provider, name, count, queueMode) => {
+                let res = `${provider} Плейлист **${name}** загружен (**\`${count}\`** ${plural(count, 'трек', 'трека', 'треков')}).`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор текущего трека.';
+                        break;
+
+                    case 'queue':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор всей очереди.';
+                        break;
+
+                    case 'disable':
+                        res += '\nОбнаружен модификатор режима очереди, отключаю режим повтора.';
+                        break;
+                }
+
+                return res;
+            },
+
+            COMMAND_PP_PUBLIC_LOADED: (provider, name, count, queueMode) => {
+                let res = `${provider} Публичный плейлист **${name}** загружен (**\`${count}\`** ${plural(count, 'трек', 'трека', 'треков')}).`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор текущего трека.';
+                        break;
+
+                    case 'queue':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор всей очереди.';
+                        break;
+
+                    case 'disable':
+                        res += '\nОбнаружен модификатор режима очереди, отключаю режим повтора.';
+                        break;
+                }
+
+                return res;
+            },
 
             COMMAND_MYLIST_EMPTY: () => 'У вас еще нет плейлистов.',
             COMMAND_MYLIST_TITLE: () => 'Список ваших плейлистов',
@@ -271,15 +366,33 @@ module.exports = class extends Language {
 
             COMMAND_VK_USER_USER_NOT_FOUND: () => 'Пользователь не был найден, проверьте указанный айди.',
             COMMAND_VK_USER_TRACKS_NOT_LOADED: () => 'Не удалось загрузить треки, попробуйте изменить настройки приватности.',
-            COMMAND_VK_USER_LOADED: (provider, name, size, failed) => `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** ${plural(size, 'трек', 'трека', 'треков')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'трека', 'треков')} не было загружено (в стране расположения сервера они недоступны). ` : ''}`,
+            COMMAND_VK_USER_LOADED: (provider, name, size, failed, queueMode) => {
+                let res = `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** ${plural(size, 'трек', 'трека', 'треков')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'трека', 'треков')} не было загружено (в стране расположения сервера они недоступны). ` : ''}`;
+                
+                switch(queueMode) {
+                    case 'single':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор текущего трека.';
+                        break;
+
+                    case 'queue':
+                        res += '\nОбнаружен модификатор режима очереди, устанавливаю повтор всей очереди.';
+                        break;
+
+                    case 'disable':
+                        res += '\nОбнаружен модификатор режима очереди, отключаю режим повтора.';
+                        break;
+                }
+
+                return res;
+            },
+
             COMMAND_VK_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
             COMMAND_SOUNDCLOUD_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
             COMMAND_YANDEX_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
+            COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Параметры сервера ${name}`,
             COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Язык: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не установлено\`**'}\nЛайвплеер: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не установлен\`**'}`,
-            
-            COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
 
             FILTERS_INFO_DESCRIPTION: () => 'Показывает параметры эффектов.',
             FILTERS_CLEAR_DESCRIPTION: () => 'Сбрасывает все установленные параметры эффектов',
@@ -304,6 +417,7 @@ module.exports = class extends Language {
 
             PLAY_DESCRIPTION: () => 'Ищет трек по указанному запросу или ссылке.',
             PLAY_QUERY_DESCRIPTION: () => 'Запрос',
+            PLAY_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             PREMIUM_ACTIVATE_DESCRIPTION: () => 'Активирует премиум подписку на сервере',
             PREMIUM_INFO_DESCRIPTION: () => 'Показывает информацию о подписке',
@@ -315,6 +429,7 @@ module.exports = class extends Language {
             PLAYLIST_DELETE_NAME_DESCRIPTION: () => 'Название плейлиста',
             PLAYLIST_PLAY_DESCRIPTION: () => 'Воспроизводит указанный вами плейлист.',
             PLAYLIST_PLAY_NAME_DESCRIPTION: () => 'Название плейлиста',
+            PLAYLIST_PLAY_MODE_DESCRIPTION: () => 'Режим повторения очереди',
             PLAYLIST_INFO_DESCRIPTION: () => 'Показывает список треков в вашем плейлисте',
             PLAYLIST_INFO_NAME_DESCRIPTION: () => 'Название плейлиста',
             PLAYLIST_INFO_PAGE_DESCRIPTION: () => 'Страница',
@@ -348,6 +463,7 @@ module.exports = class extends Language {
 
             SOUNDCLOUD_SEARCH_DESCRIPTION: () => 'Ищет треки на SoundCloud',
             SOUNDCLOUD_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            SOUNDCLOUD_SEARCH_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             SEEK_DESCRIPTION: () => 'Перематывает трек на указанную позицию.',
             SEEK_TIME_DESCRIPTION: () => 'Время',
@@ -375,9 +491,11 @@ module.exports = class extends Language {
             VK_USER_USER_DESCRIPTION: () => 'ID пользователя',
             VK_USER_COUNT_DESCRIPTION: () => 'Количество треков',
             VK_USER_OFFSET_DESCRIPTION: () => 'Начало позиции',
+            VK_USER_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             VK_SEARCH_DESCRIPTION: () => 'Ищет треки в VK',
             VK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            VK_SEARCH_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             VOLUME_DESCRIPTION: () => 'Изменяет уровень громкости для этого сервера.',
             VOLUME_LEVEL_DESCRIPTION: () => 'Громкость',
@@ -386,9 +504,11 @@ module.exports = class extends Language {
 
             YANDEX_SEARCH_DESCRIPTION: () => 'Ищет треки на Yandex.Music',
             YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            YANDEX_SEARCH_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
-            COMMAND_ZVUK_SEARCH_DESCRIPTION: () => 'Ищет треки на платформе Zvuk',
-            COMMAND_ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            ZVUK_SEARCH_DESCRIPTION: () => 'Ищет треки на платформе Zvuk',
+            ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            ZVUK_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Вся собранная аналитика на этом сервере была успешно сброшена.',
             COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Сбор аналитики успешно ${isEnabled ? 'включен' : 'отключен'} на этом сервере`,
