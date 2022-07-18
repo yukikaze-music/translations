@@ -43,6 +43,9 @@ module.exports = class extends Language {
             COMMAND_NIGHTCORE_SET: (speed) => `⌛ **The tempo of nightcore effect is set to \`${speed}\` and will be applied in a couple of seconds.**`,
             COMMAND_NIGHTCORE_SLOW: () => '⌛ **The tempo of nightcore effect is set to slow and will be applied in a couple of seconds.**',
 
+            COMMAND_EQUALIZER_MISSING_PERMISSIONS: () => 'You can\'t use equalizer. Ask someone with `Dj` role to do it.',
+            COMMAND_EQUALIZER_SET: () => '⌛ **The equalizer preset was set, please wait a moment.**',
+
             COMMAND_PLAY_MISSING_QUERY: () => 'Enter the name or a link to the track.',
             COMMAND_PLAY_MISSING_PERMISSIONS: () => 'I can\'t join channel or use microphone.',
             COMMAND_PLAY_NO_MATCHES: (failed) => {
@@ -56,6 +59,10 @@ module.exports = class extends Language {
                 let res = `${provider} Track **${name}** has been added to the queue.`;
                 
                 switch(queueMode) {
+                    case 'shuffle':
+                        res += '\nQueue mode modifier detected, tracks will play in random order.';
+                        break;
+
                     case 'single':
                         res += '\nQueue mode modifier detected, music player has been looped.';
                         break;
@@ -76,6 +83,10 @@ module.exports = class extends Language {
                 let res = `${provider} The playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
                 
                 switch(queueMode) {
+                    case 'shuffle':
+                        res += '\nQueue mode modifier detected, tracks will play in random order.';
+                        break;
+
                     case 'single':
                         res += '\nQueue mode modifier detected, music player has been looped.';
                         break;
@@ -96,6 +107,10 @@ module.exports = class extends Language {
                 let res = `${provider} **${name}** is playing now.`;
                 
                 switch(queueMode) {
+                    case 'shuffle':
+                        res += '\nQueue mode modifier detected, tracks will play in random order.';
+                        break;
+
                     case 'single':
                         res += '\nQueue mode modifier detected, music player has been looped.';
                         break;
@@ -117,6 +132,7 @@ module.exports = class extends Language {
 
             COMMAND_NP_TITLE: (name) => `Tracks are currently being played for ${name}`,
             COMMAND_NP_LAST_TRACK: () => '••• The last track is playing now.',
+            COMMAND_NP_NODE: (name) => `The track is playing on the music node ${name}`,
             COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} ${plural(count, 'track', 'tracks', 'tracks')} in the queue..`,
             COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length) => `Now playing **[${np.info.title}](${np.info.uri})**\nRequested by: <@${np.info.requested}>\n\nVolume: ${volume}%\n${bar}\n\`${position} / ${length}\``,
             COMMAND_NP_UPDATE: () => 'Update',
@@ -169,12 +185,14 @@ module.exports = class extends Language {
             COMMAND_REMOVE_MISSING_PERMISSIONS: () => 'You can\'t remove tracks from queue. Ask someone with `Dj` role to do it.',
             COMMAND_REMOVE_PARAMS: () => 'Specify a track number to remove.',
             COMMAND_REMOVE_REMOVED: (name) => `Track **${name}** removed from queue.`,
+            COMMAND_REMOVE_RANGE_REMOVED: (count) => `**${count}** ${plural(count, 'track', 'tracks', 'tracks')} have been removed from the queue.`,
 
             COMMAND_LOOP_MISSING_PERMISSIONS: () => 'You can\'t use loop function. Ask someone with `Dj` role to do it.',
             COMMAND_LOOP_PARAMS: () => 'Choose the loop mode: **`off`, `single`, `queue`**',
             COMMAND_LOOP_DISABLED: () => '**The queue loop is disabled.**',
             COMMAND_LOOP_QUEUE: () => ':repeat: **The music player\'s queue was looped.**',
             COMMAND_LOOP_SINGLE: () => ':repeat_one: **The music player has been looped.**',
+            COMMAND_LOOP_SHUFFLE: () => '🔀 **The tracks will now play in random order.**',
 
             COMMAND_PP_PLAYLIST_NAME: () => 'Specify the name of the playlist..',
             COMMAND_PP_INVALID_PLAYLIST: () => 'The specified playlist wasn\'t found.',
@@ -183,6 +201,10 @@ module.exports = class extends Language {
                 let res = `${provider} Playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`;
                 
                 switch(queueMode) {
+                    case 'shuffle':
+                        res += '\nQueue mode modifier detected, tracks will play in random order.';
+                        break;
+
                     case 'single':
                         res += '\nQueue mode modifier detected, music player has been looped.';
                         break;
@@ -203,6 +225,10 @@ module.exports = class extends Language {
                 let res = `${provider} Public playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`;
                 
                 switch(queueMode) {
+                    case 'shuffle':
+                        res += '\nQueue mode modifier detected, tracks will play in random order.';
+                        break;
+
                     case 'single':
                         res += '\nQueue mode modifier detected, music player has been looped.';
                         break;
@@ -259,10 +285,9 @@ module.exports = class extends Language {
             COMMAND_DJ_INVALID_ROLE: () => 'You can\'t select this role.',
             COMMAND_DJ_ROLE_SET: () => 'Role was selected succesfully.',
 
-            COMMAND_FILTERS_INFO: (equalizer, karaoke, timescale, rotation) => `**Filters:**\n Bass-boost: \`[ ${equalizer.map(x => x.gain).join(', ')} ]\`\nKaraoke mode: \`${(karaoke && karaoke.monoLevel !== 1) ? 'Mono' : (karaoke && karaoke.level) !== 1 ? 'Enabled' : 'Disabled'}\`\nNightcore: \`${(timescale && timescale.rate !== 1) ? timescale?.rate + 'x' : 'Disabled'}\`\nRotation: \`${rotation ? rotation.rotationHz + 'x' : 'Disabled'}\``,
-            COMMAND_FILTERS_FOOTER: () => 'To reset all parameters, call the command `/filters clear``.',
-            COMMAND_FILTERS_CLEARED: () => 'All filter\'s parameters have been cleared.',
-
+            COMMAND_EFFECTS_INFO: (equalizer, karaoke, timescale, rotation) => `**Effects:**\n Bass-boost: \`[ ${equalizer.map(x => x.gain).join(', ')} ]\`\nKaraoke mode: \`${(karaoke && karaoke.monoLevel !== 1) ? 'Mono' : (karaoke && karaoke.level) !== 1 ? 'Enabled' : 'Disabled'}\`\nNightcore: \`${(timescale && timescale.rate !== 1) ? timescale?.rate + 'x' : 'Disabled'}\`\nRotation: \`${rotation ? rotation.rotationHz + 'x' : 'Disabled'}\``,
+            COMMAND_EFFECTS_FOOTER: () => 'To reset all parameters, call the command `/effects reset``.',
+            
             PLAYLIST_PRIVACY: (i) => {
                 return {
                     "private": "Private",
@@ -338,8 +363,8 @@ module.exports = class extends Language {
             LIVEPLAYER_EMBED_DESCRIPTION: (np, queueText) => `Now playing [${np.info.title}](${np.info.uri || 'https://lolicon.su'})\nRequest by: <@${np.info.requested}>\n\n**List of tracks in the queue:**\n${queueText.length ? queueText : 'Queue is empty...'}`,
             NOTHING_PLAYING_TOPIC: () => 'Nothing is playing now',
 
-            COMMAND_FILTERS_CLEAR_MISSING_PERMISSIONS: () => 'You can\'t reset the effects parameters. Ask someone with `Dj` role to do it.',
-            COMMAND_FILTERS_CLEAR_CLEARED: () => 'The effects parameters have been successfully reset.',
+            COMMAND_EFFECTS_RESET_MISSING_PERMISSIONS: () => 'You can\'t reset the effects parameters. Ask someone with `Dj` role to do it.',
+            COMMAND_EFFECTS_RESET: () => 'The effects parameters have been successfully reset.',
 
             COMMAND_STATS_INFORMATION: (guilds, users, memoryUsage, shardId, totalMem) => `Guilds: \`${guilds}\`\nUsers: \`${users}\`\nMemory usage: \`${memoryUsage} MB\`\n\n**The guild is on a shard \`#${shardId}\`**`,
             COMMAND_STATS_MUSIC_NODE_INFORMATION: (players, playingPlayers, memoryUsage, uptime) => `Players: \`${players}\`\nPlaying players: \`${playingPlayers}\`\nMemory usage: \`${memoryUsage} MB\`\n **Launched <t:${uptime}:R>**`,
@@ -370,6 +395,10 @@ module.exports = class extends Language {
                 let res = `${provider} Playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
                 
                 switch(queueMode) {
+                    case 'shuffle':
+                        res += '\nQueue mode modifier detected, tracks will play in random order.';
+                        break;
+
                     case 'single':
                         res += '\nQueue mode modifier detected, music player has been looped.';
                         break;
@@ -394,14 +423,14 @@ module.exports = class extends Language {
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Server settings for ${name}`,
             COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Language: **\`${language}\`**\nDJ role: ${djRoleID ? `<@&${djRoleID}>` : '**\`Not installed\`**'}\nLiveplayer: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Not installed\`**'}`,
 
-            FILTERS_INFO_DESCRIPTION: () => 'Shows effect options.',
-            FILTERS_CLEAR_DESCRIPTION: () => 'Resets all set effect parameters.',
-            FILTERS_BASS_DESCRIPTION: () => 'Sets a bass-boost to the current playback.',
-            FILTERS_BASS_MODE_DESCRIPTION: () => 'Bass-boost mode',
-            FILTERS_KARAOKE_DESCRIPTION: () => 'Turns on karaoke mode for the current playback.',
-            FILTERS_KARAOKE_MODE_DESCRIPTION: () => 'Karaoke mode',
-            FILTERS_ROTATION_DESCRIPTION: () => 'Sets a rotation effect to the current playback.',
-            FILTERS_ROTATION_MODE_DESCRIPTION: () => 'Rotation mode',
+            EFFECTS_INFO_DESCRIPTION: () => 'Shows effect options.',
+            EFFECTS_CLEAR_DESCRIPTION: () => 'Resets all set effect parameters.',
+            EFFECTS_BASS_DESCRIPTION: () => 'Sets a bass-boost to the current playback.',
+            EFFECTS_BASS_MODE_DESCRIPTION: () => 'Bass-boost mode',
+            EFFECTS_KARAOKE_DESCRIPTION: () => 'Turns on karaoke mode for the current playback.',
+            EFFECTS_KARAOKE_MODE_DESCRIPTION: () => 'Karaoke mode',
+            EFFECTS_ROTATION_DESCRIPTION: () => 'Sets a rotation effect to the current playback.',
+            EFFECTS_ROTATION_MODE_DESCRIPTION: () => 'Rotation mode',
 
             LOOP_DESCRIPTION: () => 'Switches the loop mode for the current playback.',
             LOOP_MODE_DESCRIPTION: () => 'Mode',
@@ -448,8 +477,9 @@ module.exports = class extends Language {
 
             QUEUE_LIST_DESCRIPTION: () => 'Returns the queue for this server.',
             QUEUE_LIST_PAGE_DESCRIPTION: () => 'Page',
-            QUEUE_REMOVE_DESCRIPTION: () => 'Removes the specified track from the queue.',
+            QUEUE_REMOVE_DESCRIPTION: () => 'Removes the specified track or tracks from the queue.',
             QUEUE_REMOVE_INDEX_DESCRIPTION: () => 'Track position',
+            QUEUE_REMOVE_COUNT_DESCRIPTION: () => 'Number of tracks',
             QUEUE_MOVE_DESCRIPTION: () => 'Moves tracks in the queue.',
             QUEUE_MOVE_INDEX_DESCRIPTION: () => 'Track position',
             QUEUE_MOVE_DESTINATION_DESCRIPTION: () => 'New track position',
