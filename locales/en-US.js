@@ -13,7 +13,8 @@ module.exports = class extends Language {
             NODES_NOT_AVAILABLE: () => 'Music isn\'t available at the moment.',
             NO_MATCHES: () => 'Nothing was found for your query.',
             LOAD_FAILED: () => 'Track load failed, skipping it.',
-            
+            QUERY_LOAD_FAILED: (message) => `An error occurred while processing the request:\n\`\`\`asciidoc\n- ${message}\`\`\``,
+
             PLAYER_CREATE_FAILED: () => 'The voice connection attempt failed.',
             PLAYER_DISCONNECTED: () => 'The connection was dropped because an unknown error occurred during playback or I was disconnected from the voice channel.',
 
