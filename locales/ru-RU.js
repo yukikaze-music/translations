@@ -83,7 +83,7 @@ module.exports = class extends Language {
             },
 
             COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed, queueMode) => {
-                let res = `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** ${plural(size, 'трек', 'трека', 'треков')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'трека', 'треков')} не было загружено (в стране расположения сервера они недоступны). ` : ''}`;
+                let res = `${provider} Плейлист **${name || 'Неизвестный плейлист'}** загружен в очередь, ${plural(size, `был добавлен **${size}** трек`, `было добавлено **${size}** трека`, `было добавлено **${size}** треков`)}.${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'трека', 'треков')} не было загружено (в стране расположения сервера они недоступны). ` : ''}`;
                 
                 switch(queueMode) {
                     case 'shuffle':
@@ -201,7 +201,7 @@ module.exports = class extends Language {
             COMMAND_PP_INVALID_PLAYLIST: () => 'Указанный плейлист не был найден.',
             COMMAND_PP_PLAYLIST_EMPTY: () => 'Указанный плейлист пустой.',
             COMMAND_PP_PLAYLIST_LOADED: (provider, name, count, queueMode) => {
-                let res = `${provider} Плейлист **${name}** загружен (**\`${count}\`** ${plural(count, 'трек', 'трека', 'треков')}).`;
+                let res = `${provider} Пользовательский плейлист **${name}** загружен в очередь, ${plural(count, `был добавлен **${count}** трек`, `было добавлено **${count}** трека`, `было добавлено **${count}** треков`)}.`;
                 
                 switch(queueMode) {
                     case 'shuffle':
@@ -225,7 +225,7 @@ module.exports = class extends Language {
             },
 
             COMMAND_PP_PUBLIC_LOADED: (provider, name, count, queueMode) => {
-                let res = `${provider} Публичный плейлист **${name}** загружен (**\`${count}\`** ${plural(count, 'трек', 'трека', 'треков')}).`;
+                let res = `${provider} Публичный плейлист **${name}** загружен в очередь, ${plural(count, `был добавлен **${count}** трек`, `было добавлено **${count}** трека`, `было добавлено **${count}** треков`)}.`;
                 
                 switch(queueMode) {
                     case 'shuffle':
@@ -395,7 +395,7 @@ module.exports = class extends Language {
             COMMAND_VK_USER_USER_NOT_FOUND: () => 'Пользователь не был найден, проверьте указанный айди.',
             COMMAND_VK_USER_TRACKS_NOT_LOADED: () => 'Не удалось загрузить треки, попробуйте изменить настройки приватности.',
             COMMAND_VK_USER_LOADED: (provider, name, size, failed, queueMode) => {
-                let res = `${provider} Плейлист **\`${name || 'Неизвестный плейлист'}\`** загружен в очередь (**\`${size}\`** ${plural(size, 'трек', 'трека', 'треков')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'трека', 'треков')} не было загружено (в стране расположения сервера они недоступны). ` : ''}`;
+                let res = `${provider} Плейлист **${name || 'Неизвестный плейлист'}** загружен в очередь, ${plural(size, `был добавлен **${size}** трек`, `было добавлено **${size}** трека`, `было добавлено **${size}** треков`)}.${failed && failed > 1 ? `\n${failed} ${plural(failed, 'трек', 'трека', 'треков')} не было загружено (в стране расположения сервера они недоступны). ` : ''}`;
                 
                 switch(queueMode) {
                     case 'shuffle':

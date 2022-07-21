@@ -81,7 +81,7 @@ module.exports = class extends Language {
             },
             
             COMMAND_PLAY_PLAYLIST_LOADED: (provider, size, name, failed, queueMode) => {
-                let res = `${provider} The playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
+                let res = `${provider} The playlist **${name || 'Unknown playlist'}** has been queued, ${plural(size, `**${size}** track has been added`, `**${size}** tracks have been added`, `**${size}** tracks have been added`)}.${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
                 
                 switch(queueMode) {
                     case 'shuffle':
@@ -199,7 +199,7 @@ module.exports = class extends Language {
             COMMAND_PP_INVALID_PLAYLIST: () => 'The specified playlist wasn\'t found.',
             COMMAND_PP_PLAYLIST_EMPTY: () => 'This playlist is empty.',
             COMMAND_PP_PLAYLIST_LOADED: (provider, name, count, queueMode) => {
-                let res = `${provider} Playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`;
+                let res = `${provider} Playlist **${name}** has been queued, ${plural(count, `**${count}** track has been added`, `**${count}** tracks have been added`, `**${count}** tracks have been added`)}.`;
                 
                 switch(queueMode) {
                     case 'shuffle':
@@ -223,7 +223,7 @@ module.exports = class extends Language {
             },
 
             COMMAND_PP_PUBLIC_LOADED: (provider, name, count, queueMode) => {
-                let res = `${provider} Public playlist **${name}** is loaded (**\`${count}\`** ${plural(count, 'track', 'tracks', 'tracks')}).`;
+                let res = `${provider} Public playlist **${name}** has been queued, ${plural(count, `**${count}** track has been added`, `**${count}** tracks have been added`, `**${count}** tracks have been added`)}.`;
                 
                 switch(queueMode) {
                     case 'shuffle':
@@ -394,7 +394,7 @@ module.exports = class extends Language {
             COMMAND_VK_USER_USER_NOT_FOUND: () => 'The user was not found, please check the id.',
             COMMAND_VK_USER_TRACKS_NOT_LOADED: () => 'Unable to load tracks, please change your privacy settings.',
             COMMAND_VK_USER_LOADED: (provider, name, size, failed, queueMode) => {
-                let res = `${provider} Playlist **\`${name || 'Unknown playlist'}\`** is loaded (**\`${size}\`** ${plural(size, 'track', 'tracks', 'tracks')}).${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
+                let res = `${provider} Playlist **${name || 'Unknown playlist'}** has been queued, ${plural(size, `**${size}** track has been added`, `**${size}** tracks have been added`, `**${size}** tracks have been added`)}.${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
                 
                 switch(queueMode) {
                     case 'shuffle':
