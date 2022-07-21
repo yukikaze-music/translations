@@ -6,8 +6,8 @@ module.exports = class extends Language {
         super('ru-RU');
 
         this.language = {
-            LANGUAGE_NAME: () => 'русский',
-            DEFAULT: (key) => `Ключ ${key} ещё не переведён на русский.`,
+            LANGUAGE_NAME: () => 'Русский',
+            DEFAULT: (key) => `Ключ ${key} ещё не переведён на Русский.`,
             MENU_FOOTER_PAGE: () => 'Страница ',
             NOTHING_PLAYING: () => 'Сейчас ничего не играет.',
             NODES_NOT_AVAILABLE: () => 'На данный момент музыка недоступна.',
@@ -424,13 +424,16 @@ module.exports = class extends Language {
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Параметры сервера ${name}`,
             COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Язык: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не установлено\`**'}\nЛайвплеер: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не установлен\`**'}`,
 
-            EFFECTS_INFO_DESCRIPTION: () => 'Показывает параметры эффектов.',
-            EFFECTS_CLEAR_DESCRIPTION: () => 'Сбрасывает все установленные параметры эффектов',
-            EFFECTS_BASS_DESCRIPTION: () => 'Добавляет басс-буст эффект для текущего воспроизведения.',
+            EFFECTS_EQUALIZER_DESCRIPTION: () => 'Применяет выбранный пресет эквалайзера для текущего воспроизведения',
+            EFFECTS_EQUALIZER_PRESET_DESCRIPTION: () => 'Пресет, который будет применен',
+            EFFECTS_NIGHTCORE_DESCRIPTION: () => 'Добавляет эффект nightcore для текущего воспроизведения',
+            EFFECTS_NIGHTCORE_MODE_DESCRIPTION: () => 'Режим nightcore',
+            EFFECTS_RESET_DESCRIPTION: () => 'Сбрасывает все установленные параметры эффектов',
+            EFFECTS_BASS_DESCRIPTION: () => 'Добавляет басс-буст эффект для текущего воспроизведения',
             EFFECTS_BASS_MODE_DESCRIPTION: () => 'Режим басс-буста',
-            EFFECTS_KARAOKE_DESCRIPTION: () => 'Включает режим караоке для текущего воспроизведения.',
+            EFFECTS_KARAOKE_DESCRIPTION: () => 'Включает режим караоке для текущего воспроизведения',
             EFFECTS_KARAOKE_MODE_DESCRIPTION: () => 'Режим караоке',
-            EFFECTS_ROTATION_DESCRIPTION: () => 'Добавляет эффект rotation для текущего воспроизведения.',
+            EFFECTS_ROTATION_DESCRIPTION: () => 'Добавляет эффект rotation для текущего воспроизведения',
             EFFECTS_ROTATION_MODE_DESCRIPTION: () => 'Режим rotation',
 
             LOOP_DESCRIPTION: () => 'Переключает режим повторения для текущего воспроизведения',
@@ -439,44 +442,35 @@ module.exports = class extends Language {
             LYRICS_DESCRIPTION: () => 'Ищет текст для текущей или указаной песни',
             LYRICS_NAME_DESCRIPTION: () => 'Название песни',
 
-            NP_DESCRIPTION: () => 'Выдает информацию о текущем воспроизведении.',
+            NP_DESCRIPTION: () => 'Выдает информацию о текущем воспроизведении',
 
-            PAUSE_DESCRIPTION: () => 'Ставит плеер на паузу.',
+            PAUSE_DESCRIPTION: () => 'Ставит плеер на паузу',
 
             PING_DESCRIPTION: () => 'Показывает пинг бота',
 
-            PLAY_DESCRIPTION: () => 'Ищет трек по указанному запросу или ссылке.',
+            PLAY_DESCRIPTION: () => 'Ищет трек по указанному запросу или ссылке',
             PLAY_QUERY_DESCRIPTION: () => 'Запрос',
             PLAY_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             PREMIUM_ACTIVATE_DESCRIPTION: () => 'Активирует премиум подписку на сервере',
             PREMIUM_INFO_DESCRIPTION: () => 'Показывает информацию о подписке',
 
-            PLAYLIST_LIST_DESCRIPTION: () => 'Показывает список ваших плейлистов.',
+            PLAYLIST_LIST_DESCRIPTION: () => 'Показывает список ваших плейлистов',
+            PLAYLIST_MENU_DESCRIPTION: () => 'Открывает меню управления вашим плейлистом',
+            PLAYLIST_MENU_NAME_DESCRIPTION: () => 'Название плейлиста',
             PLAYLIST_CREATE_DESCRIPTION: () => 'Создает плейлист с указанным вами именем',
             PLAYLIST_CREATE_NAME_DESCRIPTION: () => 'Название плейлиста',
-            PLAYLIST_DELETE_DESCRIPTION: () => 'Удаляет плейлист с указанным вами именем',
-            PLAYLIST_DELETE_NAME_DESCRIPTION: () => 'Название плейлиста',
-            PLAYLIST_PLAY_DESCRIPTION: () => 'Воспроизводит указанный вами плейлист.',
+            PLAYLIST_PLAY_DESCRIPTION: () => 'Воспроизводит указанный вами плейлист',
             PLAYLIST_PLAY_NAME_DESCRIPTION: () => 'Название плейлиста',
             PLAYLIST_PLAY_MODE_DESCRIPTION: () => 'Режим повторения очереди',
-            PLAYLIST_INFO_DESCRIPTION: () => 'Показывает список треков в вашем плейлисте',
-            PLAYLIST_INFO_NAME_DESCRIPTION: () => 'Название плейлиста',
-            PLAYLIST_INFO_PAGE_DESCRIPTION: () => 'Страница',
             PLAYLIST_ADD_DESCRIPTION: () => 'Добавляет трек в ваш плейлист',
             PLAYLIST_ADD_NAME_DESCRIPTION: () => 'Название плейлиста',
             PLAYLIST_ADD_QUERY_DESCRIPTION: () => 'Запрос',
             PLAYLIST_REMOVE_DESCRIPTION: () => 'Удаляет трек из вашего плейлиста',
             PLAYLIST_REMOVE_NAME_DESCRIPTION: () => 'Название плейлиста',
             PLAYLIST_REMOVE_INDEX_DESCRIPTION: () => 'Номер трека',
-            PLAYLIST_RENAME_DESCRIPTION: () => 'Переименовывает ваш плейлист',
-            PLAYLIST_RENAME_NAME_DESCRIPTION: () => 'Название плейлиста',
-            PLAYLIST_RENAME_NEW_DESCRIPTION: () => 'Новое название плейлиста',
-            PLAYLIST_PUBLIC_DESCRIPTION: () => 'Изменяет параметры приватности вашего плейлиста.',
-            PLAYLIST_PUBLIC_NAME: () => 'Название плейлиста',
-            PLAYLIST_PUBLIC_PRIVACY: () => 'Приватность плейлиста',
 
-            QUEUE_LIST_DESCRIPTION: () => 'Выдает очередь для этого сервера.',
+            QUEUE_LIST_DESCRIPTION: () => 'Выдает очередь для этого сервера',
             QUEUE_LIST_PAGE_DESCRIPTION: () => 'Страница',
             QUEUE_REMOVE_DESCRIPTION: () => 'Убирает указанный трек, либо треки из очереди',
             QUEUE_REMOVE_INDEX_DESCRIPTION: () => 'Номер трека',
@@ -485,18 +479,18 @@ module.exports = class extends Language {
             QUEUE_MOVE_INDEX_DESCRIPTION: () => 'Позиция трека',
             QUEUE_MOVE_DESTINATION_DESCRIPTION: () => 'Новая позиция трека',
 
-            RADIO_DESCRIPTION: () => 'Добавляет в очередь указанную радиостанцию.',
+            RADIO_DESCRIPTION: () => 'Добавляет в очередь указанную радиостанцию',
             RADIO_STATION_DESCRIPTION: () => 'Радиостанция',
             
-            REPLAY_DESCRIPTION: () => 'Начинает проигрывать трек с начала.',
+            REPLAY_DESCRIPTION: () => 'Начинает проигрывать трек с начала',
 
-            RESUME_DESCRIPTION: () => 'Снимает плеер с паузы.',
+            RESUME_DESCRIPTION: () => 'Снимает плеер с паузы',
 
             SOUNDCLOUD_SEARCH_DESCRIPTION: () => 'Ищет треки на SoundCloud',
             SOUNDCLOUD_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
             SOUNDCLOUD_SEARCH_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
-            SEEK_DESCRIPTION: () => 'Перематывает трек на указанную позицию.',
+            SEEK_DESCRIPTION: () => 'Перематывает трек на указанную позицию',
             SEEK_TIME_DESCRIPTION: () => 'Время',
 
             SETTINGS_INFO_DESCRIPTION: () => 'Показывает установленные параметры',
@@ -509,14 +503,14 @@ module.exports = class extends Language {
             SETTINGS_LIVEPLAYER_CREATE_DESCRIPTION: () => 'Создает канал для лайвплеера',
             SETTINGS_LIVEPLAYER_REMOVE_DESCRIPTION: () => 'Убирает канал лайвплеера',
 
-            SHUFFLE_DESCRIPTION: () => 'Перемешивает треки в очереди.',
+            SHUFFLE_DESCRIPTION: () => 'Перемешивает треки в очереди',
 
-            SKIP_DESCRIPTION: () => 'Пропускает текущий трек.',
+            SKIP_DESCRIPTION: () => 'Пропускает текущий трек',
             
             STATS_DESCRIPTION: () => 'Показывает статистику бота',
 
-            STOP_DESCRIPTION: () => 'Останавливает воспроизведение музыки для этого сервера.',
-            CLEAR_DESCRIPTION: () => 'Чистит всю очередь.',
+            STOP_DESCRIPTION: () => 'Останавливает воспроизведение музыки для этого сервера',
+            CLEAR_DESCRIPTION: () => 'Чистит всю очередь',
 
             VK_USER_DESCRIPTION: () => 'Проигрывает указанное количество сохраненных треков пользователя VK',
             VK_USER_USER_DESCRIPTION: () => 'ID пользователя',
@@ -528,10 +522,10 @@ module.exports = class extends Language {
             VK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
             VK_SEARCH_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
-            VOLUME_DESCRIPTION: () => 'Изменяет уровень громкости для этого сервера.',
+            VOLUME_DESCRIPTION: () => 'Изменяет уровень громкости для этого сервера',
             VOLUME_LEVEL_DESCRIPTION: () => 'Громкость',
 
-            VOTESKIP_DESCRIPTION: () => 'Проголосовать за пропуск текущего трека.',
+            VOTESKIP_DESCRIPTION: () => 'Проголосовать за пропуск текущего трека',
 
             YANDEX_SEARCH_DESCRIPTION: () => 'Ищет треки на Yandex.Music',
             YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
@@ -550,11 +544,25 @@ module.exports = class extends Language {
             COMMAND_ANALYTICS_INFO: (size, length) => `Всего на этом сервере прослушали ${size} ${plural(size, 'трек', 'трека', 'треков')} общей длиной ${length}.`,
             COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** был прослушан **${track.count} ${plural(track.count, 'раз', 'раза', 'раз')}**`,
 
-            COMMAND_ANALYTICS_DESCRIPTION: () => 'Показывает список треков, которые слушали на этом сервере.',
-            COMMAND_SETTINGS_ANALYTICS_DESCRIPTION: () => 'Управляет параметрами аналитики',
-            COMMAND_SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Включает или же отключает сбор аналитики',
-            COMMAND_SETTINGS_ANALYTICS_STATUS_STATE_DESCRIPTION: () => 'Состояние',
-            COMMAND_SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Сбрасывает все собранные данные аналитики на этом сервере'
+            ANALYTICS_DESCRIPTION: () => 'Показывает список треков, которые слушали на этом сервере',
+            SETTINGS_ANALYTICS_DESCRIPTION: () => 'Управляет параметрами аналитики',
+            SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Включает или же отключает сбор аналитики',
+            SETTINGS_ANALYTICS_STATUS_STATE_DESCRIPTION: () => 'Состояние',
+            SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Сбрасывает все собранные данные аналитики на этом сервере',
+
+            COMMAND_PLAYLIST_LIST_TITLE: () => 'Список ваших плейлистов',
+            COMMAND_PLAYLIST_LIST_FIELD: (tracks, privacy, created) => `Всего треков › ${tracks}\nПриватность › ${privacy}\nСоздан <t:${created}:D>`,
+            COMMAND_PLAYLIST_LIST_EMPTY: () => 'У вас еще нет плейлистов. Создайте один с помощью команды `/playlist create`',
+            PLAYLIST_RENAME_BUTTON: () => 'Переименовать',
+            PLAYLIST_PRIVACY_BUTTON: () => 'Изменить приватность',
+            PLAYLIST_DELETE_BUTTON: () => 'Удалить',
+            PLAYLIST_TRACKS_BUTTON: () => 'Cписок треков',
+            PLAYLIST_PLAY_BUTTON: () => 'Воспроизвести',
+            PLAYLIST_LINK_BUTTON: () => 'Ссылка',
+            PLAYLIST_SETTINGS_TITLE: () => 'Настройка плейлиста',
+            PLAYLIST_SETTINGS_PRIVACY: () => 'Выберите тип приватности для своего плейлиста из списка ниже',
+            PLAYLIST_MODAL_NAME_LABEL: () => 'Название плейлиста',
+            PLAYLIST_MENU_INFO: (name, tracks, privacy, created) => `Плейлист **${name}** имеет **${tracks} ${plural(tracks, 'трек', 'трека', 'треков')}**. Тип — \`${privacy}\`. Был создан <t:${created}:D>.`
         }
     }
 }
