@@ -18,8 +18,6 @@ module.exports = class extends Language {
             PLAYER_CREATE_FAILED: () => 'Не вдалося приєднатись до голосового каналу.',
             PLAYER_DISCONNECTED: () => 'З\'єднання було скинуто через те, що сталася невідома помилка під час відтворення або мене відключили від голосового каналу.',
 
-            MISSING_PERMISSIONS: (err) => `У бота недостатньо прав для виконання команди:\n\`${ err }\``,
-         
             QUEUE_LIMIT: (limit) => `Ви не можете додати більше ${limit} ${plural(limit, 'трек', 'треки', 'треків')} у чергу.`,
             QUEUE_LIMIT_INFO: () => `⚠ Не всі треки були завантажені через обмеження максимальної кількості треків у черзі.`,
 
@@ -48,7 +46,6 @@ module.exports = class extends Language {
             COMMAND_EQUALIZER_SET: () => '⌛ **Пресет для еквалайзера встановлено, зачекайте трохи.**',
 
             COMMAND_PLAY_MISSING_QUERY: () => 'Вкажіть назву або посилання на трек.',
-            COMMAND_PLAY_MISSING_PERMISSIONS: () => 'Бот не має права підключатися до цього голосового каналу або говорити в ньому.',
             COMMAND_PLAY_NO_MATCHES: (failed) => {
                 if (!failed)
                     return 'По вашому запиту нічого не знайдено.';
@@ -161,7 +158,6 @@ module.exports = class extends Language {
             COMMAND_REPLAY_SEEKED: () => 'Програвання треку розпочато з початку.',
 
             COMMAND_MOVE_MISSING_PERMISSIONS: () => 'Ви не можете перемістити цей трек. Попросіть зробити це учасника з ролью `Dj`.',
-            COMMAND_MOVE_MISSING_POSITIONS: () => 'Вкажіть **номер треку** для переміщення та **нову позицію треку**.',
             COMMAND_MOVE_INDEX: () => 'Вказано неправильну позицію треку для переміщення.',
             COMMAND_MOVE_DESTINATION: () => 'Вказано неправильну нову позицію для переміщення. Вона має бути в межах черги.',
             COMMAND_MOVE_MOVED: (newTrack, oldTrack) => `Трек **${newTrack}** тепер знаходиться на позиції треку **${oldTrack}**.`,
@@ -176,7 +172,6 @@ module.exports = class extends Language {
             COMMAND_RESUME_RESUMED: () => ':arrow_forward: **Плеєр знято з паузи.**',
 
             COMMAND_VOLUME_MISSING_PERMISSIONS: () => 'Ви не можете змінити рівень гучності. Попросіть зробити це учасника з ролью `Dj`.',
-            COMMAND_VOLUME_PARAMS: () => 'Вкажіть рівень гучності **(від 0% до 100%)**.',
             COMMAND_VOLUME_CHANGED: (emoji, level) => `${emoji} Гучність встановлена на **${level}%**`,
 
             COMMAND_VOTESKIP_ALREADY_VOTED: () => 'Ви вже проголосували за пропуск поточного треку.',
@@ -189,7 +184,6 @@ module.exports = class extends Language {
             COMMAND_REMOVE_RANGE_REMOVED: (count) => `З черги було вилучено **${count}** ${plural(count, 'трек', 'треки', 'треків')}.`,
 
             COMMAND_LOOP_MISSING_PERMISSIONS: () => 'Ви не можете встановити повторення треків. Попросіть зробити це учасника з ролью `Dj`.',
-            COMMAND_LOOP_PARAMS: () => 'Вкажіть режим повторення: **`off`, `single`, `queue`**',
             COMMAND_LOOP_DISABLED: () => '**Тепер плеєр не повторюватиме треки.**',
             COMMAND_LOOP_QUEUE: () => ':repeat: **Тепер плеєр повторюватиме всю чергу.**',
             COMMAND_LOOP_SINGLE: () => ':repeat_one: **Тепер плеєр повторюватиме тільки поточний трек.**',
@@ -245,10 +239,6 @@ module.exports = class extends Language {
 
                 return res;
             },
-
-            COMMAND_MYLIST_EMPTY: () => 'У вас ще немає плейлистів.',
-            COMMAND_MYLIST_TITLE: () => 'Список ваших плейлистів',
-            COMMAND_MYLIST_INFO: (tracks, type, created, id) => `Усього треків: \`${tracks}\`\nТип: \`${type}\`\nСтворений: ${created}\n**[Відкрити](https://lolicon.su/playlist/${id})**`,
 
             COMMAND_PLAYLIST_NAME: () => 'Вкажіть назву плейлиста.',
             COMMAND_PLAYLIST_INVALID_PLAYLIST: () => 'Вказаний плейлист не знайдено.',
@@ -336,11 +326,8 @@ module.exports = class extends Language {
 
             IN_VOICE: () => 'Ви повинні знаходитись у голосовому каналі.',
             IN_THE_SAME_VOICE_CHANNEL: () => 'Ви повинні знаходитися в одному голосовому каналі з ботом.',
-            OWNER_ONLY: () => 'Ця команда доступна лише власникам бота.',
             MISSING_VOICE_PERMISSIONS: () => 'Бот не має права підключатися до цього голосового каналу або говорити в ньому.',
             MISSING_STAGE_VOICE_PERMISSIONS: () => 'Боту потрібні права модератора на трибуні для програвання музики у цьому каналі.',
-            BOT_MISSING_PERMISSIONS: (perms) => `У бота недостатньо прав для виконання цієї команди: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
-            USER_MISSING_PERMISSIONS: (perms) => `У вас недостатньо прав для виконання цієї команди: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
             RULE_MISSING_PERMISSIONS: (target, perms) => `У ${target || 'вас'} недостатньо прав для виконання цієї команди: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
 
             LIVEPLAYER_BUTTON_REMOVE: () => 'Вилучити',

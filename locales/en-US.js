@@ -18,8 +18,6 @@ module.exports = class extends Language {
             PLAYER_CREATE_FAILED: () => 'The voice connection attempt failed.',
             PLAYER_DISCONNECTED: () => 'The connection was dropped because an unknown error occurred during playback or I was disconnected from the voice channel.',
 
-            MISSING_PERMISSIONS: (err) => `Sorry, but I can't join channel, because of missing permission: \n\`${ err }\``,
-         
             QUEUE_LIMIT: (limit) => `You can't upload more than ${limit} ${plural(limit, 'track', 'tracks', 'tracks')} to the queue.`,
             QUEUE_LIMIT_INFO: () => `⚠ Not all tracks were uploaded due to the limit on the maximum number of tracks in the queue.`,
 
@@ -48,7 +46,6 @@ module.exports = class extends Language {
             COMMAND_EQUALIZER_SET: () => '⌛ **The equalizer preset was set, please wait a moment.**',
 
             COMMAND_PLAY_MISSING_QUERY: () => 'Enter the name or a link to the track.',
-            COMMAND_PLAY_MISSING_PERMISSIONS: () => 'I can\'t join channel or use microphone.',
             COMMAND_PLAY_NO_MATCHES: (failed) => {
                 if (!failed)
                     return 'Nothing was found for your query.';
@@ -161,7 +158,6 @@ module.exports = class extends Language {
             COMMAND_REPLAY_SEEKED: () => 'Starting the track over.',
 
             COMMAND_MOVE_MISSING_PERMISSIONS: () => 'You can\'t move tracks in a queue. Ask someone with `Dj` role to do it.',
-            COMMAND_MOVE_MISSING_POSITIONS: () => 'Specify the **track position** for it moving to **new position**.',
             COMMAND_MOVE_INDEX: () => 'An invalid track position specified.',
             COMMAND_MOVE_DESTINATION: () => 'Specify the new track position in the queue.',
             COMMAND_MOVE_MOVED: (newTrack, oldTrack) => `Track **${newTrack}** is now **${oldTrack}** in the queue.`,
@@ -176,7 +172,6 @@ module.exports = class extends Language {
             COMMAND_RESUME_RESUMED: () => ':arrow_forward: **The music player has been resumed**',
 
             COMMAND_VOLUME_MISSING_PERMISSIONS: () => 'You can\'t change volume. Ask someone with `Dj` role to do it.',
-            COMMAND_VOLUME_PARAMS: () => 'Specify volume level **(from 0% to 100%)**.',
             COMMAND_VOLUME_CHANGED: (emoji, level) => `${emoji} Volume is set to **${level}%**`,
 
             COMMAND_VOTESKIP_ALREADY_VOTED: () => 'You have already voted to skip the track.',
@@ -189,7 +184,6 @@ module.exports = class extends Language {
             COMMAND_REMOVE_RANGE_REMOVED: (count) => `**${count}** ${plural(count, 'track', 'tracks', 'tracks')} have been removed from the queue.`,
 
             COMMAND_LOOP_MISSING_PERMISSIONS: () => 'You can\'t use loop function. Ask someone with `Dj` role to do it.',
-            COMMAND_LOOP_PARAMS: () => 'Choose the loop mode: **`off`, `single`, `queue`**',
             COMMAND_LOOP_DISABLED: () => '**The queue loop is disabled.**',
             COMMAND_LOOP_QUEUE: () => ':repeat: **The music player\'s queue was looped.**',
             COMMAND_LOOP_SINGLE: () => ':repeat_one: **The music player has been looped.**',
@@ -245,10 +239,6 @@ module.exports = class extends Language {
 
                 return res;
             },
-
-            COMMAND_MYLIST_EMPTY: () => 'You don\'t have playlists yet.',
-            COMMAND_MYLIST_TITLE: () => 'Playlist list',
-            COMMAND_MYLIST_INFO: (tracks, type, created, id) => `Total tracks: \`${tracks}\`\nType: \`${type}\`\nCreated at: ${created}\n**[Open](https://lolicon.su/playlist/${id})**`,
 
             COMMAND_PLAYLIST_NAME: () => 'Specify the name of the playlist.',
             COMMAND_PLAYLIST_INVALID_PLAYLIST: () => 'The specified playlist wasn\'t found.',
@@ -335,12 +325,8 @@ module.exports = class extends Language {
 
             IN_VOICE: () => 'You should be in voice channel.',
             IN_THE_SAME_VOICE_CHANNEL: () => 'You need to join the same voice channel as the bot',
-            OWNER_ONLY: () => 'Only bot\'s owners can use this command.',
             MISSING_VOICE_PERMISSIONS: () => 'I don\'t have enough permissions to join your voice channel.',
             MISSING_STAGE_VOICE_PERMISSIONS: () => 'To play music, the bot needs the permission of a `moderator` on stage channel.',
-
-            BOT_MISSING_PERMISSIONS: (perms) => `I don't have enough permissions to execute this command: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
-            USER_MISSING_PERMISSIONS: (perms) => `You don't have enough permissions to use this command: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
             RULE_MISSING_PERMISSIONS: (target, perms) => `${target || 'You'} don't have enough permissions to use this command: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
 
             LIVEPLAYER_BUTTON_REMOVE: () => 'Remove',
