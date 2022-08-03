@@ -147,7 +147,7 @@ module.exports = class extends Language {
             COMMAND_STOP_STOPPED: () => ':stop_button: **Бот покинув голосовий канал.**',
 
             COMMAND_CLEAR_MISSING_PERMISSIONS: () => 'Ви не можете почистити чергу. Попросіть зробити це учасника з ролью `Dj`.',
-            COMMAND_CLEAR_QUEUE_CLEARED: () => '☑️ **Черга почищена.**',
+            COMMAND_CLEAR_QUEUE_CLEARED: () => '**Черга очищена.**',
 
             COMMAND_SEEK_MISSING_PERMISSIONS: () => 'Ви не можете перемотати цей трек. Попросіть зробити це учасника з ролью `Dj`.',
             COMMAND_SEEK_PARAMS: () => 'Вкажіть позицію для перемотування.',

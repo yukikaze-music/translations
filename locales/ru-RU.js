@@ -149,7 +149,7 @@ module.exports = class extends Language {
             COMMAND_STOP_STOPPED: () => ':stop_button: **Бот покинул голосовой канал.**',
 
             COMMAND_CLEAR_MISSING_PERMISSIONS: () => 'Вы не можете почистить очередь. Попросите сделать это участника с ролью `Dj`.',
-            COMMAND_CLEAR_QUEUE_CLEARED: () => '☑️ **Очередь почищена.**',
+            COMMAND_CLEAR_QUEUE_CLEARED: () => '**Очередь очищена.**',
 
             COMMAND_SEEK_MISSING_PERMISSIONS: () => 'Вы не можете перемотать этот трек. Попросите сделать это участника с ролью `Dj`.',
             COMMAND_SEEK_PARAMS: () => 'Укажите позицию для перемотки.',
