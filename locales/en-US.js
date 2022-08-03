@@ -550,6 +550,7 @@ module.exports = class extends Language {
             COMMAND_PLAYLIST_LIST_TITLE: () => 'List of your playlists',
             COMMAND_PLAYLIST_LIST_FIELD: (tracks, privacy, created) => `Total tracks › ${tracks}\nPrivacy › ${privacy}\nCreated <t:${created}:D>`,
             COMMAND_PLAYLIST_LIST_EMPTY: () => 'You don\'t have playlists yet. Create one with `/playlist create` command',
+            PLAYLIST_NOT_FOUND: () => 'The specified playlist wasn\'t found.',
             PLAYLIST_RENAME_BUTTON: () => 'Rename',
             PLAYLIST_PRIVACY_BUTTON: () => 'Privacy',
             PLAYLIST_DELETE_BUTTON: () => 'Remove',

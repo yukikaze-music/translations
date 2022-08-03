@@ -542,6 +542,7 @@ module.exports = class extends Language {
             COMMAND_PLAYLIST_LIST_TITLE: () => 'Список ваших плейлистов',
             COMMAND_PLAYLIST_LIST_FIELD: (tracks, privacy, created) => `Всего треков › ${tracks}\nПриватность › ${privacy}\nСоздан <t:${created}:D>`,
             COMMAND_PLAYLIST_LIST_EMPTY: () => 'У вас еще нет плейлистов. Создайте один с помощью команды `/playlist create`',
+            PLAYLIST_NOT_FOUND: () => 'Указанный плейлист не найден.',
             PLAYLIST_RENAME_BUTTON: () => 'Переименовать',
             PLAYLIST_PRIVACY_BUTTON: () => 'Изменить приватность',
             PLAYLIST_DELETE_BUTTON: () => 'Удалить',
