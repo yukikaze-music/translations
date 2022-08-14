@@ -356,7 +356,7 @@ module.exports = class extends Language {
 
             COMMAND_EFFECTS_RESET_MISSING_PERMISSIONS: () => 'Вы не можете сбросить параметры эффектов. Попросите сделать это участника с ролью `Dj`',
 
-            COMMAND_STATS_INFORMATION: (guilds, users, memoryUsage, shardId) => `Серверов: \`${guilds}\`\nПользователей: \`${users}\`\nИспользуется памяти: \`${memoryUsage} MB\`\n\n**Сервер находится на шарде \`#${shardId}\`**`,
+            COMMAND_STATS_INFORMATION: (guilds, cachedUsers, users, memoryUsage, shardId) => `Серверов: \`${guilds}\`\nПользователей: \`${cachedUsers} / ${users}\`\nИспользуется памяти: \`${memoryUsage} MB\`\n\n**Сервер находится на шарде \`#${shardId}\`**`,
             COMMAND_STATS_MUSIC_NODE_INFORMATION: (players, playingPlayers, memoryUsage, uptime) => `Всего плееров: \`${players}\`\nИграет: \`${playingPlayers}\`\nИспользуется памяти: \`${memoryUsage} MB\`\n **Запущено <t:${uptime}:R>**`,
 
             COMMAND_LYRICS_TRACK_NOT_FOUND: () => 'Не удалось найти песню.',
