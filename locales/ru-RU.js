@@ -10,7 +10,7 @@ module.exports = class extends Language {
             DEFAULT: (key) => `Ключ ${key} ещё не переведён на Русский.`,
 
             MENU_FOOTER_PAGE: () => 'Страница ',
-            NOTHING_PLAYING: () => 'Сейчас ничего не играет.',
+            NOTHING_PLAYING: () => 'Сейчас ничего не играет',
             NODES_NOT_AVAILABLE: () => 'На данный момент музыка недоступна.',
             NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
             LOAD_FAILED: () => 'Загрузка трека не удалась, пропускаю.',
@@ -132,9 +132,9 @@ module.exports = class extends Language {
 
             COMMAND_NP_TITLE: (name) => `Сейчас проигрываются треки для ${name}`,
             COMMAND_NP_LAST_TRACK: () => '••• Играет последний трек',
-            COMMAND_NP_NODE: (name) => `Трек воспроизводится на музыкальной ноде ${name}`,
+            COMMAND_NP_NODE: (name, load) => `Трек воспроизводится на музыкальной ноде ${name} (${load}%)`,
             COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} ${plural(count, 'трек', 'трека', 'треков')} в очереди..`,
-            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length) => `Сейчас играет **[${np.info.title}](${np.info.uri})**\nЗапрос от: <@${np.info.requested}>\n\nГромкость: ${volume}%\n${bar}\n\`${position} / ${length}\``,
+            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length, queueLength) => `Сейчас играет **[${np.info.title}](${np.info.uri})**\nЗапрос от: <@${np.info.requested}>\n\nГромкость: ${volume}%\n${bar}\n\`[${position} / ${length}] • [${position} / ${queueLength}]\``,
             COMMAND_NP_UPDATE: () => 'Обновить',
             COMMAND_NP_LYRICS: () => 'Текст',
 
@@ -411,7 +411,7 @@ module.exports = class extends Language {
             COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Параметры сервера ${name}`,
-            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Язык: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не установлено\`**'}\nЛайвплеер: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не установлен\`**'}`,
+            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID, liveplayerAnnounceEnabled, analyticsEnabled) => `Язык: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не установлено\`**'}\nКанал лайвплеера: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не установлен\`**'}\nВызов лайвплеера: ${liveplayerAnnounceEnabled ? '**\`Включен\`**' : '**\`Отключен\`**'}\nСбор аналитики: ${analyticsEnabled ? '**\`Включен\`**' : '**\`Отключен\`**'}`,
 
             EFFECTS_EQUALIZER_DESCRIPTION: () => 'Применяет выбранный пресет эквалайзера для текущего воспроизведения',
             EFFECTS_EQUALIZER_PRESET_DESCRIPTION: () => 'Пресет, который будет применен',
@@ -527,6 +527,8 @@ module.exports = class extends Language {
             COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Вся собранная аналитика на этом сервере была успешно сброшена.',
             COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Сбор аналитики успешно ${isEnabled ? 'включен' : 'отключен'} на этом сервере`,
 
+            COMMAND_SETTINGS_LIVEPLAYER_ANNOUNCE_SET: (isEnabled) => `Вызов лайвплеера в канал был ${isEnabled ? 'включен' : 'отключен'} на этом сервере`,
+
             COMMAND_ANALYTICS_TITLE: () => 'Информация о прослушанных треках на этом сервере',
             COMMAND_ANALYTICS_LISTENED: () => '**История прослушиваний:**\n',
             COMMAND_ANALYTICS_TOP: () => 'Наиболее часто прослушиваемые:',
@@ -538,6 +540,9 @@ module.exports = class extends Language {
             SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Включает или же отключает сбор аналитики',
             SETTINGS_ANALYTICS_STATUS_STATE_DESCRIPTION: () => 'Состояние',
             SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Сбрасывает все собранные данные аналитики на этом сервере',
+
+            SETTINGS_LIVEPLAYER_ANNOUNCE_DESCRIPTION: () => 'Включает вызов лайвплеера в канал, где запустили бота',
+            SETTINGS_LIVEPLAYER_ANNOUNCE_STATE_DESCRIPTION: () => 'Состояние',
 
             COMMAND_PLAYLIST_LIST_TITLE: () => 'Список ваших плейлистов',
             COMMAND_PLAYLIST_LIST_FIELD: (tracks, privacy, created) => `Всего треков › ${tracks}\nПриватность › ${privacy}\nСоздан <t:${created}:D>`,

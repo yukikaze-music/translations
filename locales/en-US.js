@@ -9,7 +9,7 @@ module.exports = class extends Language {
             LANGUAGE_NAME: () => 'English',
             DEFAULT: (key) => `Key ${key} isn't translated for English`,
             MENU_FOOTER_PAGE: () => 'Page ',
-            NOTHING_PLAYING: () => 'Nothing is playing now.',
+            NOTHING_PLAYING: () => 'Nothing is playing now',
             NODES_NOT_AVAILABLE: () => 'Music isn\'t available at the moment.',
             NO_MATCHES: () => 'Nothing was found for your query.',
             LOAD_FAILED: () => 'Track load failed, skipping it.',
@@ -130,9 +130,9 @@ module.exports = class extends Language {
 
             COMMAND_NP_TITLE: (name) => `Tracks are currently being played for ${name}`,
             COMMAND_NP_LAST_TRACK: () => '••• The last track is playing now.',
-            COMMAND_NP_NODE: (name) => `The track is playing on the music node ${name}`,
+            COMMAND_NP_NODE: (name, load) => `The track is playing on the music node ${name} (${load}%)`,
             COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} ${plural(count, 'track', 'tracks', 'tracks')} in the queue..`,
-            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length) => `Now playing **[${np.info.title}](${np.info.uri})**\nRequested by: <@${np.info.requested}>\n\nVolume: ${volume}%\n${bar}\n\`${position} / ${length}\``,
+            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length, queueLength) => `Now playing **[${np.info.title}](${np.info.uri})**\nRequested by: <@${np.info.requested}>\n\nVolume: ${volume}%\n${bar}\n\`[${position} / ${length}] • [${position} / ${queueLength}]\``,
             COMMAND_NP_UPDATE: () => 'Update',
             COMMAND_NP_LYRICS: () => 'Lyrics',
 
@@ -409,7 +409,7 @@ module.exports = class extends Language {
             COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Server settings for ${name}`,
-            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Language: **\`${language}\`**\nDJ role: ${djRoleID ? `<@&${djRoleID}>` : '**\`Not installed\`**'}\nLiveplayer: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Not installed\`**'}`,
+            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID, liveplayerAnnounceEnabled, analyticsEnabled) => `Language: **\`${language}\`**\nDJ role: ${djRoleID ? `<@&${djRoleID}>` : '**\`Not installed\`**'}\nLiveplayer: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Not installed\`**'}\nLiveplayer announce: ${liveplayerAnnounceEnabled ? '**\`Enabled\`**' : '**\`Disabled\`**'}\nAnalytics: ${analyticsEnabled ? '**\`Enabled\`**' : '**\`Disabled\`**'}`,
 
             EFFECTS_EQUALIZER_DESCRIPTION: () => 'Applies the selected EQ preset to the current playback',
             EFFECTS_EQUALIZER_PRESET_DESCRIPTION: () => 'Preset',
@@ -500,6 +500,9 @@ module.exports = class extends Language {
             SETTINGS_LIVEPLAYER_CREATE_DESCRIPTION: () => 'Creates the liveplayer channel',
             SETTINGS_LIVEPLAYER_REMOVE_DESCRIPTION: () => 'Removes the liveplayer channel',
 
+            SETTINGS_LIVEPLAYER_ANNOUNCE_DESCRIPTION: () => 'Enables a liveplayer announce to the channel where the playback was launched',
+            SETTINGS_LIVEPLAYER_ANNOUNCE_STATE_DESCRIPTION: () => 'State',
+
             SHUFFLE_DESCRIPTION: () => 'Shuffles the tracks in the queue',
 
             SKIP_DESCRIPTION: () => 'Skips the current track',
@@ -534,6 +537,8 @@ module.exports = class extends Language {
 
             COMMAND_SETTINGS_ANALYTICS_RESET: () => 'All collected analytics on this server were successfully reset.',
             COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Analytics collection is ${isEnabled ? 'enabled' : 'disabled'} on this server.`,
+
+            COMMAND_SETTINGS_LIVEPLAYER_ANNOUNCE_SET: (isEnabled) => `Liveplayer announcements was ${isEnabled ? 'enabled' : 'disabled'} on this server.`,
 
             COMMAND_ANALYTICS_TITLE: () => 'Information about listened tracks on this server',
             COMMAND_ANALYTICS_LISTENED: () => '**Listened:**\n',

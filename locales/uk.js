@@ -9,7 +9,7 @@ module.exports = class extends Language {
             LANGUAGE_NAME: () => 'Українська',
             DEFAULT: (key) => `Ключ ${key} ще не переведений на Українську.`,
             MENU_FOOTER_PAGE: () => 'Сторінка ',
-            NOTHING_PLAYING: () => 'Зараз нічого не грає.',
+            NOTHING_PLAYING: () => 'Зараз нічого не грає',
             NODES_NOT_AVAILABLE: () => 'На даний момент музика недоступна.',
             NO_MATCHES: () => 'На ваш запит нічого не знайдено.',
             LOAD_FAILED: () => 'Не вдалося завантажити трек.',
@@ -130,9 +130,9 @@ module.exports = class extends Language {
 
             COMMAND_NP_TITLE: (name) => `Наразі програються треки для ${name}`,
             COMMAND_NP_LAST_TRACK: () => '••• Грає останній трек',
-            COMMAND_NP_NODE: (name) => `Трек відтворюється на музичній ноді ${name}`,
+            COMMAND_NP_NODE: (name, load) => `Трек відтворюється на музичній ноді ${name} (${load}%)`,
             COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} ${plural(count, 'трек', 'треки', 'треків')} у черзі..`,
-            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length) => `Зараз грає **[${np.info.title}](${np.info.uri})**\nДоданий: <@${np.info.requested}>\n\nГучність: ${volume}%\n${bar}\n\`${position} / ${length}\``,
+            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length, queueLength) => `Зараз грає **[${np.info.title}](${np.info.uri})**\nДоданий: <@${np.info.requested}>\n\nГучність: ${volume}%\n${bar}\n\`[${position} / ${length}] • [${position} / ${queueLength}]\``,
             COMMAND_NP_UPDATE: () => 'Оновити',
             COMMAND_NP_LYRICS: () => 'Текст',
 
@@ -409,7 +409,7 @@ module.exports = class extends Language {
             COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'По вашому запиту нічого не знайдено.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Параметри сервера ${name}`,
-            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID) => `Мова: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не встановлена\`**'}\nЛайвплеєр: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не встановлений\`**'}`,
+            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID, liveplayerAnnounceEnabled, analyticsEnabled) => `Мова: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не встановлена\`**'}\nЛайвплеєр: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не встановлений\`**'}\nВиклик лайвплеєра: ${liveplayerAnnounceEnabled ? '**\`Включено\`**' : '**\`Вимкнено\`**'}\nЗбір аналітики: ${analyticsEnabled ? '**\`Включено\`**' : '**\`Вимкнено\`**'}`,
 
             EFFECTS_EQUALIZER_DESCRIPTION: () => 'Застосовує вибраний пресет еквалайзера для поточного відтворення',
             EFFECTS_EQUALIZER_PRESET_DESCRIPTION: () => 'Пресет, який буде застосовано',
@@ -490,6 +490,9 @@ module.exports = class extends Language {
             SETTINGS_LIVEPLAYER_CREATE_DESCRIPTION: () => 'Створює канал для лайвплеєра',
             SETTINGS_LIVEPLAYER_REMOVE_DESCRIPTION: () => 'Прибирає канал лайвплеєра',
 
+            SETTINGS_LIVEPLAYER_ANNOUNCE_DESCRIPTION: () => 'Включає виклик лайвплеєра в канал, де запустили бота',
+            SETTINGS_LIVEPLAYER_ANNOUNCE_STATE_DESCRIPTION: () => 'Стан',
+
             SHUFFLE_DESCRIPTION: () => 'Перемішує треки у черзі',
 
             SKIP_DESCRIPTION: () => 'Пропускає поточний трек',
@@ -524,6 +527,8 @@ module.exports = class extends Language {
 
             COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Уся зібрана аналітика на цьому сервері була успішно скинута.',
             COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Збір аналітики ${isEnabled ? 'включений' : 'відключений'} на цьому сервері.`,
+
+            COMMAND_SETTINGS_LIVEPLAYER_ANNOUNCE_SET: (isEnabled) => `Виклик лайвплеєра в канал був ${isEnabled ? 'увімкнений' : 'вимкнений'} на цьому сервері.`,
 
             COMMAND_ANALYTICS_TITLE: () => 'Інформація про прослухані треки на цьому сервері',
             COMMAND_ANALYTICS_LISTENED: () => '**Історія прослуховувань:**\n',
