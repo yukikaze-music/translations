@@ -8,6 +8,9 @@ module.exports = class extends Language {
         this.language = {
             LANGUAGE_NAME: () => 'Українська',
             DEFAULT: (key) => `Ключ ${key} ще не переведений на Українську.`,
+
+            YOUTUBE_DISABLED: () => 'Відтворення музики з YouTube недоступне <:tmCat:987434629655044107>',
+
             MENU_FOOTER_PAGE: () => 'Сторінка ',
             NOTHING_PLAYING: () => 'Зараз нічого не грає',
             NODES_NOT_AVAILABLE: () => 'На даний момент музика недоступна.',

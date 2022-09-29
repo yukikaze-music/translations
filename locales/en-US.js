@@ -8,6 +8,9 @@ module.exports = class extends Language {
         this.language = {
             LANGUAGE_NAME: () => 'English',
             DEFAULT: (key) => `Key ${key} isn't translated for English`,
+
+            YOUTUBE_DISABLED: () => 'YouTube music playback is not available <:tmCat:987434629655044107>',
+
             MENU_FOOTER_PAGE: () => 'Page ',
             NOTHING_PLAYING: () => 'Nothing is playing now',
             NODES_NOT_AVAILABLE: () => 'Music isn\'t available at the moment.',
