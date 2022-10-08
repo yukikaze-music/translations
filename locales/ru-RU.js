@@ -536,6 +536,7 @@ module.exports = class extends Language {
             COMMAND_ANALYTICS_TOP: () => 'Наиболее часто прослушиваемые:',
             COMMAND_ANALYTICS_INFO: (size, length) => `Всего на этом сервере прослушали ${size} ${plural(size, 'трек', 'трека', 'треков')} общей длиной ${length}.`,
             COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** был прослушан **${track.count} ${plural(track.count, 'раз', 'раза', 'раз')}**`,
+            COMMAND_ANALYTICS_DISALED: () => 'На этом сервере отключен сбор аналитики',
 
             ANALYTICS_DESCRIPTION: () => 'Показывает список треков, которые слушали на этом сервере',
             SETTINGS_ANALYTICS_DESCRIPTION: () => 'Управляет параметрами аналитики',
