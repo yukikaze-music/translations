@@ -550,6 +550,8 @@ module.exports = class extends Language {
             COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** was listened **${track.count} times**`,
             COMMAND_ANALYTICS_DISALED: () => 'Analytics is disabled on this server',
 
+            COMMAND_LAST_EMPTY: () => 'There is nothing in the listening history',
+
             ANALYTICS_DESCRIPTION: () => 'Displays a list of tracks that have been listened to on this server',
             SETTINGS_ANALYTICS_DESCRIPTION: () => 'Manages analytics settings',
             SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Enables or disables analytics collection',

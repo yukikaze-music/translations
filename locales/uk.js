@@ -540,6 +540,8 @@ module.exports = class extends Language {
             COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** був прослуханий **${track.count} ${plural(track.count, 'раз', 'рази', 'разів')}**`,
             COMMAND_ANALYTICS_DISALED: () => 'На цьому сервері вимкнено збір аналітики',
 
+            COMMAND_LAST_EMPTY: () => 'В історії прослуховувань нічого немає',
+
             ANALYTICS_DESCRIPTION: () => 'Відображає список треків, які слухали на цьому сервері',
             SETTINGS_ANALYTICS_DESCRIPTION: () => 'Керує параметрами аналітики',
             SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Включає або відключає збір аналітики',
