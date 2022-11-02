@@ -9,8 +9,8 @@ module.exports = class extends Language {
             LANGUAGE_NAME: () => 'Русский',
             DEFAULT: (key) => `Ключ ${key} ещё не переведён на Русский.`,
 
-            YOUTUBE_DISABLED: () => 'Воспроизведение музыки с YouTube недоступно <:tmCat:987434629655044107>',
-            
+            DISABLED_PLATFORM: () => '<:tmNekoCute:1020279802441236520> Воспрозведение музыки на этой платформе недоступно, аналогичный запрос будет выполнен на другой платформе.',
+
             MENU_FOOTER_PAGE: () => 'Страница ',
             NOTHING_PLAYING: () => 'Сейчас ничего не играет',
             NODES_NOT_AVAILABLE: () => 'На данный момент музыка недоступна.',

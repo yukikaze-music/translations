@@ -9,7 +9,7 @@ module.exports = class extends Language {
             LANGUAGE_NAME: () => 'English',
             DEFAULT: (key) => `Key ${key} isn't translated for English`,
 
-            YOUTUBE_DISABLED: () => 'YouTube music playback is not available <:tmCat:987434629655044107>',
+            DISABLED_PLATFORM: () => '<:tmNekoCute:1020279802441236520> Music playback is not available on this platform, a similar request will be made on another platform.',
 
             MENU_FOOTER_PAGE: () => 'Page ',
             NOTHING_PLAYING: () => 'Nothing is playing now',
@@ -56,7 +56,7 @@ module.exports = class extends Language {
                     return 'The playlist could not be loaded because the tracks it contains are not available in the country where the server is located.';
             },
             COMMAND_PLAY_LOAD_FAILED: () => 'An error occured while trying to load track.',
-            COMMAND_PLAY_TRACK_LOADED: (provider, name, queueMode) => {
+            COMMAND_PLAY_TRACK_LOADED: (provider, name, queueMode, sourceName) => {
                 let res = `${provider} Track **${name}** has been added to the queue.`;
                 
                 switch(queueMode) {
@@ -104,10 +104,10 @@ module.exports = class extends Language {
                 return res;
             },
 
-            COMMAND_PLAY_NOW_PLAYING: (provider, name, queueMode) => {
+            COMMAND_PLAY_NOW_PLAYING: (provider, name, queueMode, sourceName) => {
                 let res = `${provider} **${name}** is playing now.`;
                 
-                switch(queueMode) {
+                switch (queueMode) {
                     case 'shuffle':
                         res += '\nQueue mode modifier detected, tracks will play in random order.';
                         break;

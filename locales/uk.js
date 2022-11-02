@@ -9,7 +9,7 @@ module.exports = class extends Language {
             LANGUAGE_NAME: () => 'Українська',
             DEFAULT: (key) => `Ключ ${key} ще не переведений на Українську.`,
 
-            YOUTUBE_DISABLED: () => 'Відтворення музики з YouTube недоступне <:tmCat:987434629655044107>',
+            DISABLED_PLATFORM: () => '<:tmNekoCute:1020279802441236520> Відтворення музики на цій платформі недоступне, аналогічний запит буде виконано на іншій платформі.',
 
             MENU_FOOTER_PAGE: () => 'Сторінка ',
             NOTHING_PLAYING: () => 'Зараз нічого не грає',
@@ -58,7 +58,7 @@ module.exports = class extends Language {
             COMMAND_PLAY_LOAD_FAILED: () => 'Сталася помилка під час завантаження треку.',
             COMMAND_PLAY_TRACK_LOADED: (provider, name, queueMode) => {
                 let res = `${provider} Трек **${name}** був доданий у чергу.`;
-                
+
                 switch(queueMode) {
                     case 'shuffle':
                         res += '\nВиявлено модифікатор режиму черги, треки відтворюватимуться у випадковому порядку.';
@@ -106,7 +106,7 @@ module.exports = class extends Language {
 
             COMMAND_PLAY_NOW_PLAYING: (provider, name, queueMode) => {
                 let res = `${provider} Зараз грає **${name}**.`;
-                
+
                 switch(queueMode) {
                     case 'shuffle':
                         res += '\nВиявлено модифікатор режиму черги, треки відтворюватимуться у випадковому порядку.';
