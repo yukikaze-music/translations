@@ -567,7 +567,10 @@ module.exports = class extends Language {
             DASHBOARD_DESCRIPTION: () => 'Выдает ссылку на панель управления сервером',
             DASHBOARD_EMBED_TITLE: () => 'Веб-панель',
             DASHBOARD_EMBED_DESCRIPTION: () => 'Мы имеем **удобную и простую** веб-панель, в который вы можете настроить бота, управлять воспроизведением музыки, а также добавлять свои треки в очередь.',
-            DASHBOARD_LINK_BUTTON: () => 'Перейти'
+            DASHBOARD_LINK_BUTTON: () => 'Перейти',
+
+            DEEZER_DESCRIPTION: () => 'Ищет треки на Deezer',
+            COMMAND_DEEZER_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.'
         }
     }
 }

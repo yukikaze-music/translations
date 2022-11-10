@@ -576,7 +576,10 @@ module.exports = class extends Language {
             DASHBOARD_DESCRIPTION: () => 'Gives a link to the server control panel',
             DASHBOARD_EMBED_TITLE: () => 'Dashboard',
             DASHBOARD_EMBED_DESCRIPTION: () => 'We have a **convenient and simple** web panel where you can set up the bot, manage music playback, and add your tracks to the queue.',
-            DASHBOARD_LINK_BUTTON: () => 'Open'
+            DASHBOARD_LINK_BUTTON: () => 'Open',
+
+            DEEZER_DESCRIPTION: () => 'Search tracks on Deezer',
+            COMMAND_DEEZER_SEARCH_NO_MATCHES: () => 'Nothing found for your request.'
         }
     }
 }
