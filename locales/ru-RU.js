@@ -562,7 +562,12 @@ module.exports = class extends Language {
             PLAYLIST_SETTINGS_TITLE: () => 'Настройка плейлиста',
             PLAYLIST_SETTINGS_PRIVACY: () => 'Выберите тип приватности для своего плейлиста из списка ниже',
             PLAYLIST_MODAL_NAME_LABEL: () => 'Название плейлиста',
-            PLAYLIST_MENU_INFO: (name, tracks, privacy, created) => `Плейлист **${name}** имеет **${tracks} ${plural(tracks, 'трек', 'трека', 'треков')}**. Тип — \`${privacy}\`. Был создан <t:${created}:D>.`
+            PLAYLIST_MENU_INFO: (name, tracks, privacy, created) => `Плейлист **${name}** имеет **${tracks} ${plural(tracks, 'трек', 'трека', 'треков')}**. Тип — \`${privacy}\`. Был создан <t:${created}:D>.`,
+
+            DASHBOARD_DESCRIPTION: () => 'Выдает ссылку на панель управления сервером',
+            DASHBOARD_EMBED_TITLE: () => 'Веб-панель',
+            DASHBOARD_EMBED_DESCRIPTION: () => 'Мы имеем **удобную и простую** веб-панель, в который вы можете настроить бота, управлять воспроизведением музыки, а также добавлять свои треки в очередь.',
+            DASHBOARD_LINK_BUTTON: () => 'Перейти'
         }
     }
 }

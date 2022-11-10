@@ -571,7 +571,12 @@ module.exports = class extends Language {
             PLAYLIST_SETTINGS_TITLE: () => 'Playlist settings',
             PLAYLIST_SETTINGS_PRIVACY: () => 'Choose a privacy type for your playlist from the list below',
             PLAYLIST_MODAL_NAME_LABEL: () => 'Playlist name',
-            PLAYLIST_MENU_INFO: (name, tracks, privacy, created) => `Playlist **${name}** has **${tracks} ${plural(tracks, 'track', 'tracks', 'tracks')}**. Type — \`${privacy}\`. Created on <t:${created}:D>.`
+            PLAYLIST_MENU_INFO: (name, tracks, privacy, created) => `Playlist **${name}** has **${tracks} ${plural(tracks, 'track', 'tracks', 'tracks')}**. Type — \`${privacy}\`. Created on <t:${created}:D>.`,
+
+            DASHBOARD_DESCRIPTION: () => 'Gives a link to the server control panel',
+            DASHBOARD_EMBED_TITLE: () => 'Dashboard',
+            DASHBOARD_EMBED_DESCRIPTION: () => 'We have a **convenient and simple** web panel where you can set up the bot, manage music playback, and add your tracks to the queue.',
+            DASHBOARD_LINK_BUTTON: () => 'Open'
         }
     }
 }
