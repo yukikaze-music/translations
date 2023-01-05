@@ -13,6 +13,7 @@ module.exports = class extends Language {
 
             MENU_FOOTER_PAGE: () => 'Сторінка ',
             NOTHING_PLAYING: () => 'Зараз нічого не грає',
+            QUEUE_EMPTY: () => 'Відтворення зупинено',
             NODES_NOT_AVAILABLE: () => 'На даний момент музика недоступна.',
             NO_MATCHES: () => 'На ваш запит нічого не знайдено.',
             LOAD_FAILED: () => 'Не вдалося завантажити трек.',
@@ -550,7 +551,7 @@ module.exports = class extends Language {
             SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Скидає всі зібрані дані аналітики на цьому сервері',
 
             COMMAND_PLAYLIST_LIST_TITLE: () => 'Список ваших плейлистів',
-            COMMAND_PLAYLIST_LIST_FIELD: (tracks, privacy, created) => `Усього треків › ${tracks}\nПриватність › ${privacy}\nСтворений <t:${created}:D>`,
+            COMMAND_PLAYLIST_LIST_DESCRIPTION: (size, created) => `Усього ${size} ${plural(size, 'трек', 'треки', 'треків')}, створений <t:${created}:D>`,
             COMMAND_PLAYLIST_LIST_EMPTY: () => 'У вас ще немає плейлистів. Створіть один за допомогою команди `/playlist create`',
             PLAYLIST_NOT_FOUND: () => 'Вказаний плейлист не знайдено.',
             PLAYLIST_RENAME_BUTTON: () => 'Перейменувати',
@@ -570,7 +571,12 @@ module.exports = class extends Language {
             DASHBOARD_LINK_BUTTON: () => 'Перейти',
 
             DEEZER_DESCRIPTION: () => 'Шукає треки на платформі Deezer',
-            COMMAND_DEEZER_SEARCH_NO_MATCHES: () => 'По вашому запиту нічого не знайдено.'
+            COMMAND_DEEZER_SEARCH_NO_MATCHES: () => 'По вашому запиту нічого не знайдено.',
+
+            CONNECTIONS_DESCRIPTION: () => 'Показує інформацію про підключені інтеграції',
+            CONNECTIONS_EMBED_AUTHOR: () => 'Інтеграції',
+            CONNECTIONS_EMBED_DESCRIPTION: () => 'Інтегровані плейлисти - це спеціальні плейлисти, які не можна ніяк змінювати, але їх, як і звичайні, можна використовувати. Підключити їх можна у профілі на сайті.',
+            CONNECTIONS_LINK_BUTTON: () => 'Перейти'
         }
     }
 }

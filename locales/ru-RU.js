@@ -13,6 +13,7 @@ module.exports = class extends Language {
 
             MENU_FOOTER_PAGE: () => 'Страница ',
             NOTHING_PLAYING: () => 'Сейчас ничего не играет',
+            QUEUE_EMPTY: () => 'Воспроизведение остановлено',
             NODES_NOT_AVAILABLE: () => 'На данный момент музыка недоступна.',
             NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
             LOAD_FAILED: () => 'Загрузка трека не удалась, пропускаю.',
@@ -551,7 +552,7 @@ module.exports = class extends Language {
             SETTINGS_LIVEPLAYER_ANNOUNCE_STATE_DESCRIPTION: () => 'Состояние',
 
             COMMAND_PLAYLIST_LIST_TITLE: () => 'Список ваших плейлистов',
-            COMMAND_PLAYLIST_LIST_FIELD: (tracks, privacy, created) => `Всего треков › ${tracks}\nПриватность › ${privacy}\nСоздан <t:${created}:D>`,
+            COMMAND_PLAYLIST_LIST_DESCRIPTION: (size, created) => `Всего ${size} ${plural(size, 'трек', 'трека', 'треков')}, создан <t:${created}:D>`,
             COMMAND_PLAYLIST_LIST_EMPTY: () => 'У вас еще нет плейлистов. Создайте один с помощью команды `/playlist create`',
             PLAYLIST_NOT_FOUND: () => 'Указанный плейлист не найден.',
             PLAYLIST_RENAME_BUTTON: () => 'Переименовать',
@@ -571,7 +572,12 @@ module.exports = class extends Language {
             DASHBOARD_LINK_BUTTON: () => 'Перейти',
 
             DEEZER_DESCRIPTION: () => 'Ищет треки на Deezer',
-            COMMAND_DEEZER_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.'
+            COMMAND_DEEZER_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
+
+            CONNECTIONS_DESCRIPTION: () => 'Показывает информацию о подключенных интеграциях',
+            CONNECTIONS_EMBED_AUTHOR: () => 'Интеграции',
+            CONNECTIONS_EMBED_DESCRIPTION: () => 'Интегрированные плейлисты — это специальные плейлисты, которые нельзя никак изменять, но их по прежнему можно использовать. Подключить их можно в профиле на сайте.',
+            CONNECTIONS_LINK_BUTTON: () => 'Перейти'
         }
     }
 }

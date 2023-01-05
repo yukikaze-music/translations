@@ -13,6 +13,7 @@ module.exports = class extends Language {
 
             MENU_FOOTER_PAGE: () => 'Page ',
             NOTHING_PLAYING: () => 'Nothing is playing now',
+            QUEUE_EMPTY: () => 'Playback stopped',
             NODES_NOT_AVAILABLE: () => 'Music isn\'t available at the moment.',
             NO_MATCHES: () => 'Nothing was found for your query.',
             LOAD_FAILED: () => 'Track load failed, skipping it.',
@@ -560,7 +561,7 @@ module.exports = class extends Language {
             SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Resets all collected analytics data on this server',
 
             COMMAND_PLAYLIST_LIST_TITLE: () => 'List of your playlists',
-            COMMAND_PLAYLIST_LIST_FIELD: (tracks, privacy, created) => `Total tracks › ${tracks}\nPrivacy › ${privacy}\nCreated <t:${created}:D>`,
+            COMMAND_PLAYLIST_LIST_DESCRIPTION: (size, created) => `Playlist contains ${size} ${plural(size, 'track', 'tracks', 'tracks')}, created <t:${created}:D>`,
             COMMAND_PLAYLIST_LIST_EMPTY: () => 'You don\'t have playlists yet. Create one with `/playlist create` command',
             PLAYLIST_NOT_FOUND: () => 'The specified playlist wasn\'t found.',
             PLAYLIST_RENAME_BUTTON: () => 'Rename',
@@ -580,7 +581,12 @@ module.exports = class extends Language {
             DASHBOARD_LINK_BUTTON: () => 'Open',
 
             DEEZER_DESCRIPTION: () => 'Search tracks on Deezer',
-            COMMAND_DEEZER_SEARCH_NO_MATCHES: () => 'Nothing found for your request.'
+            COMMAND_DEEZER_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
+
+            CONNECTIONS_DESCRIPTION: () => 'Shows information about connected integrations',
+            CONNECTIONS_EMBED_AUTHOR: () => 'Integrations',
+            CONNECTIONS_EMBED_DESCRIPTION: () => 'Integrated playlists are special playlists that cannot be changed in any way, but can still be used. You can connect them in your profile on the site.',
+            CONNECTIONS_LINK_BUTTON: () => 'Open'
         }
     }
 }
