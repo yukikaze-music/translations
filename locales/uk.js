@@ -415,7 +415,23 @@ module.exports = class extends Language {
             COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'По вашому запиту нічого не знайдено.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Параметри сервера ${name}`,
-            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID, liveplayerAnnounceEnabled, analyticsEnabled) => `Мова: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не встановлена\`**'}\nЛайвплеєр: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не встановлений\`**'}\nВиклик лайвплеєра: ${liveplayerAnnounceEnabled ? '**\`Включено\`**' : '**\`Вимкнено\`**'}\nЗбір аналітики: ${analyticsEnabled ? '**\`Включено\`**' : '**\`Вимкнено\`**'}`,
+            COMMAND_SETTINGS_INFO_FOOTER: () => 'Ви можете змінювати параметри за допомогою команди /settings або в панелі на веб-сайті',
+            COMMAND_SETTINGS_INFO_LIST: (guild, data) => {
+                return {
+                    'Мова': this.language.LANGUAGE_NAME() + '\n',
+                    
+                    'DJ-роль': guild.roles.cache.get(data.dj)?.name || 'Не встановлена',
+                    'Статус DJ-ролі': data.dj_enabled ? 'Увімкнена' : 'Вимкнена',
+                    'Поріг вимоги DJ-ролі': data.dj_threshold + '\n',
+        
+                    'Канал лайвплеєра': guild.channels.cache.get(data.playerChannel)?.name || 'Не встановлений',
+                    'Виклик лайвплеєра': guild.data.player_announcements_enabled ? 'Увімкнено' : 'Вимкнено',
+                    'Колір вбудованих повідомлень': data.liveplayer_embed_color.toUpperCase(),
+                    'Розташування іконки треку': ['Збоку', 'Знизу', 'Приховати'][data.liveplayer_thumbnail_location] + '\n',
+                    
+                    'Збір аналітики': data.analytics_enabled ? 'Увімкнений' : 'Вимкнений'
+                };
+            },
 
             EFFECTS_EQUALIZER_DESCRIPTION: () => 'Застосовує вибраний пресет еквалайзера для поточного відтворення',
             EFFECTS_EQUALIZER_PRESET_DESCRIPTION: () => 'Пресет, який буде застосовано',

@@ -415,7 +415,23 @@ module.exports = class extends Language {
             COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'Nothing found for your request.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Server settings for ${name}`,
-            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID, liveplayerAnnounceEnabled, analyticsEnabled) => `Language: **\`${language}\`**\nDJ role: ${djRoleID ? `<@&${djRoleID}>` : '**\`Not installed\`**'}\nLiveplayer: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Not installed\`**'}\nLiveplayer announce: ${liveplayerAnnounceEnabled ? '**\`Enabled\`**' : '**\`Disabled\`**'}\nAnalytics: ${analyticsEnabled ? '**\`Enabled\`**' : '**\`Disabled\`**'}`,
+            COMMAND_SETTINGS_INFO_FOOTER: () => 'You can change the settings using the /settings command, or in the panel on the web-site',
+            COMMAND_SETTINGS_INFO_LIST: (guild, data) => {
+                return {
+                    'Language': this.language.LANGUAGE_NAME() + '\n',
+                    
+                    'DJ role': guild.roles.cache.get(data.dj)?.name || 'Not installed',
+                    'DJ role status': data.dj_enabled ? 'Enabled' : 'Disabled',
+                    'DJ role requirement threshold': data.dj_threshold + '\n',
+        
+                    'Liveplayer channel': guild.channels.cache.get(data.playerChannel)?.name || 'Not installed',
+                    'Liveplayer announce': guild.data.player_announcements_enabled ? 'Enabled' : 'Disabled',
+                    'Embed color': data.liveplayer_embed_color.toUpperCase(),
+                    'Track icon location': ['Thumbnail', 'Image', 'Hide'][data.liveplayer_thumbnail_location] + '\n',
+                    
+                    'Analytics': data.analytics_enabled ? 'Enabled' : 'Disabled'
+                };
+            },
 
             EFFECTS_EQUALIZER_DESCRIPTION: () => 'Applies the selected EQ preset to the current playback',
             EFFECTS_EQUALIZER_PRESET_DESCRIPTION: () => 'Preset',

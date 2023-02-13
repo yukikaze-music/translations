@@ -416,7 +416,23 @@ module.exports = class extends Language {
             COMMAND_ZVUK_SEARCH_NO_MATCHES: () => 'По вашему запросу ничего не найдено.',
 
             COMMAND_SETTINGS_INFO_TITLE: (name) => `Параметры сервера ${name}`,
-            COMMAND_SETTINGS_INFO_DESCRIPTION: (language, djRoleID, liveplayerChannelID, liveplayerAnnounceEnabled, analyticsEnabled) => `Язык: **\`${language}\`**\nРоль DJ: ${djRoleID ? `<@&${djRoleID}>` : '**\`Не установлено\`**'}\nКанал лайвплеера: ${liveplayerChannelID ? `<#${liveplayerChannelID}>` : '**\`Не установлен\`**'}\nВызов лайвплеера: ${liveplayerAnnounceEnabled ? '**\`Включен\`**' : '**\`Отключен\`**'}\nСбор аналитики: ${analyticsEnabled ? '**\`Включен\`**' : '**\`Отключен\`**'}`,
+            COMMAND_SETTINGS_INFO_FOOTER: () => 'Вы можете изменять параметры с помощью команды /settings, либо в панеле на веб-сайте',
+            COMMAND_SETTINGS_INFO_LIST: (guild, data) => {
+                return {
+                    'Язык': this.language.LANGUAGE_NAME() + '\n',
+                    
+                    'DJ-роль': guild.roles.cache.get(data.dj)?.name || 'Не установлена',
+                    'Статус DJ-роли': data.dj_enabled ? 'Включена' : 'Отключена',
+                    'Порог требования DJ-роли': data.dj_threshold + '\n',
+        
+                    'Канал лайвплеера': guild.channels.cache.get(data.playerChannel)?.name || 'Не установлен',
+                    'Вызов лайвплеера': guild.data.player_announcements_enabled ? 'Включен' : 'Отключен',
+                    'Цвет встроенных сообщений': data.liveplayer_embed_color.toUpperCase(),
+                    'Расположение иконки трека': ['Сбоку', 'Внизу', 'Скрыть'][data.liveplayer_thumbnail_location] + '\n',
+                    
+                    'Сбор аналитики': data.analytics_enabled ? 'Включен' : 'Отключен'
+                };
+            },
 
             EFFECTS_EQUALIZER_DESCRIPTION: () => 'Применяет выбранный пресет эквалайзера для текущего воспроизведения',
             EFFECTS_EQUALIZER_PRESET_DESCRIPTION: () => 'Пресет, который будет применен',
