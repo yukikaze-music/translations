@@ -355,7 +355,7 @@ module.exports = class extends Language {
             LIVEPLAYER_MOVE_NOT_MOVED: () => 'Трек не был перемещен.',
 
             LIVEPLAYER_EMBED_TITLE: (name) => `Плеер для сервера ${name}`,
-            LIVEPLAYER_EMBED_DESCRIPTION: (np, queueText) => `Сейчас играет [${np.info.title}](${np.info.uri || 'https://lolicon.su'})\nЗапрос от: <@${np.info.requested}>\n\n**Список треков в очереди:**\n${queueText.length ? queueText : 'Очередь пуста...'}`,
+            LIVEPLAYER_EMBED_DESCRIPTION: (np, queueText) => `Сейчас играет [${np.info.title}](${np.info.uri || 'https://loli.aspire.su'})\nЗапрос от: <@${np.info.requested}>\n\n**Список треков в очереди:**\n${queueText.length ? queueText : 'Очередь пуста...'}`,
             NOTHING_PLAYING_TOPIC: () => 'Ничего не играет',
 
             COMMAND_EFFECTS_RESET_MISSING_PERMISSIONS: () => 'Вы не можете сбросить параметры эффектов. Попросите сделать это участника с ролью `Dj`',
