@@ -9,6 +9,7 @@ module.exports = class extends Language {
             LANGUAGE_NAME: () => 'English',
             DEFAULT: (key) => `Key ${key} isn't translated for English`,
 
+            ERROR_OCCURRED: () => 'An internal error occurred while executing the command, please try the command later. If the problem persists, contact the support server — https://discord.gg/8vm6pEemX7',
             DISABLED_PLATFORM: () => '<:tmNekoCute:1020279802441236520> Music playback is not available on this platform, a similar request will be made on another platform.',
 
             MENU_FOOTER_PAGE: () => 'Page ',
@@ -419,6 +420,7 @@ module.exports = class extends Language {
             COMMAND_SETTINGS_INFO_LIST: (guild, data) => {
                 return {
                     'Language': this.language.LANGUAGE_NAME() + '\n',
+                    'Automatic deletion of messages': guild.remove_responses ? 'Enabled' : 'Disabled',
                     
                     'DJ role': guild.roles.cache.get(data.dj)?.name || 'Not installed',
                     'DJ role status': data.dj_enabled ? 'Enabled' : 'Disabled',
@@ -429,7 +431,12 @@ module.exports = class extends Language {
                     'Embed color': data.liveplayer_embed_color.toUpperCase(),
                     'Track icon location': ['Thumbnail', 'Image', 'Hide'][data.liveplayer_thumbnail_location] + '\n',
                     
-                    'Analytics': data.analytics_enabled ? 'Enabled' : 'Disabled'
+                    'Analytics': data.analytics_enabled ? 'Enabled' : 'Disabled',
+                    'Change stage channel topic': data.change_stage_topic ? 'Enabled' : 'Disabled',
+
+                    'Radio mode': data.radio_mode == '661765685017575424' ? 'Yukikaze' : data.radio_mode == '1040406009958629436' ? 'Nowaki' : 'Disabled',
+                    'Radio channel': guild.channels.cache.get(data.radio_channel)?.name || 'Not installed',
+                    'Radio station': require('@config/Radio').find(x => x.streamURL == data.radio_uri).name
                 };
             },
 
@@ -619,7 +626,29 @@ module.exports = class extends Language {
             CONNECTIONS_DESCRIPTION: () => 'Shows information about connected integrations',
             CONNECTIONS_EMBED_AUTHOR: () => 'Integrations',
             CONNECTIONS_EMBED_DESCRIPTION: () => 'Integrated playlists are special playlists that cannot be changed in any way, but can still be used. You can connect them in your profile on the site.',
-            CONNECTIONS_LINK_BUTTON: () => 'Open'
+            CONNECTIONS_LINK_BUTTON: () => 'Open',
+
+            COMMAND_PLAYLIST_CONNECTION_PROTECTED: () => 'This interaction type is not available for integrations',
+            COMMAND_COVER_INVALID_ATTACHMENT: () => 'You can only set the image on the cover of the playlist',
+            COMMAND_COVER_CHANGED: () => 'Playlist cover has been changed',
+
+            PLAYLIST_COVER_DESCRIPTION: () => 'Sets the cover art for the specified playlist',
+            PLAYLIST_COVER_NAME_DESCRIPTION: () => 'Playlist name',
+            PLAYLIST_COVER_IMAGE_DESCRIPTION: () => 'Image',
+            
+            SETTINGS_STAGE_TOPIC_DESCRIPTION: () => 'Enables or disables changing the topic of a stage channel',
+            SETTINGS_STAGE_TOPIC_STATE_DESCRIPTION: () => 'State',
+
+            COMMAND_SETTINGS_STAGE_CHANNEL_TOPIC_CHANGE_STATUS_SET: (isEnabled) => `The change stage channel topic was ${isEnabled ? 'enabled' : 'disabled'} on this server`,
+
+            PLAYLIST_PLAY_COUNT: () => 'Number of tracks',
+            PLAYLIST_PLAY_OFFSET: () => 'Offset',
+
+            RADIO_ENABLED: () => 'This action cannot be performed because radio mode is on',
+
+            SETTINGS_AUTOREMOVE_DESCRIPTION: () => 'Sets automatic deletion of bot messages',
+            SETTINGS_AUTOREMOVE_STATE_DESCRIPTION: () => 'State',
+            COMMAND_SETTINGS_AUTOREMOVE_SET: (isEnabled) => `Automatic deletion of bot messages was ${isEnabled ? 'enabled' : 'disabled'} on this server`,
         }
     }
 }

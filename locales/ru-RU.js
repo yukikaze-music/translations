@@ -9,6 +9,7 @@ module.exports = class extends Language {
             LANGUAGE_NAME: () => 'Русский',
             DEFAULT: (key) => `Ключ ${key} ещё не переведён на Русский.`,
 
+            ERROR_OCCURRED: () => 'Произошла внутренняя ошибка во время выполнения команды, попробуйте выполнить команду позже. Если проблема не исчезнет, обратитесь на сервер поддержки — https://discord.gg/8vm6pEemX7',
             DISABLED_PLATFORM: () => '<:tmNekoCute:1020279802441236520> Воспрозведение музыки на этой платформе недоступно, аналогичный запрос будет выполнен на другой платформе.',
 
             MENU_FOOTER_PAGE: () => 'Страница ',
@@ -420,7 +421,8 @@ module.exports = class extends Language {
             COMMAND_SETTINGS_INFO_LIST: (guild, data) => {
                 return {
                     'Язык': this.language.LANGUAGE_NAME() + '\n',
-                    
+                    'Автоматическое удаление сообщений': guild.remove_responses ? 'Включено' : 'Отключено',
+
                     'DJ-роль': guild.roles.cache.get(data.dj)?.name || 'Не установлена',
                     'Статус DJ-роли': data.dj_enabled ? 'Включена' : 'Отключена',
                     'Порог требования DJ-роли': data.dj_threshold + '\n',
@@ -430,7 +432,12 @@ module.exports = class extends Language {
                     'Цвет встроенных сообщений': data.liveplayer_embed_color.toUpperCase(),
                     'Расположение иконки трека': ['Сбоку', 'Внизу', 'Скрыть'][data.liveplayer_thumbnail_location] + '\n',
                     
-                    'Сбор аналитики': data.analytics_enabled ? 'Включен' : 'Отключен'
+                    'Сбор аналитики': data.analytics_enabled ? 'Включен' : 'Отключен',
+                    'Изменение топика трибуны': data.change_stage_topic ? 'Включено' : 'Отключено',
+
+                    'Режим радио': data.radio_mode == '661765685017575424' ? 'Yukikaze' : data.radio_mode == '1040406009958629436' ? 'Nowaki' : 'Отключено',
+                    'Канал радио': guild.channels.cache.get(data.radio_channel)?.name || 'Не установлен',
+                    'Радиостанция': require('@config/Radio').find(x => x.streamURL == data.radio_uri).name
                 };
             },
 
@@ -610,7 +617,29 @@ module.exports = class extends Language {
             CONNECTIONS_DESCRIPTION: () => 'Показывает информацию о подключенных интеграциях',
             CONNECTIONS_EMBED_AUTHOR: () => 'Интеграции',
             CONNECTIONS_EMBED_DESCRIPTION: () => 'Интегрированные плейлисты — это специальные плейлисты, которые нельзя никак изменять, но их по прежнему можно использовать. Подключить их можно в профиле на сайте.',
-            CONNECTIONS_LINK_BUTTON: () => 'Перейти'
+            CONNECTIONS_LINK_BUTTON: () => 'Перейти',
+
+            COMMAND_PLAYLIST_CONNECTION_PROTECTED: () => 'Этот тип взаимодействия недоступен для интеграций',
+            COMMAND_COVER_INVALID_ATTACHMENT: () => 'Установить на обложку плейлиста можно только изображение',
+            COMMAND_COVER_CHANGED: () => 'Обложка плейлиста была изменена',
+
+            PLAYLIST_COVER_DESCRIPTION: () => 'Устанавливает обложку для указанного плейлиста',
+            PLAYLIST_COVER_NAME_DESCRIPTION: () => 'Название плейлиста',
+            PLAYLIST_COVER_IMAGE_DESCRIPTION: () => 'Обложка',
+            
+            SETTINGS_STAGE_TOPIC_DESCRIPTION: () => 'Включает или же отключает изменение топика трибуны',
+            SETTINGS_STAGE_TOPIC_STATE_DESCRIPTION: () => 'Состояние',
+
+            COMMAND_SETTINGS_STAGE_CHANNEL_TOPIC_CHANGE_STATUS_SET: (isEnabled) => `Изменение топика трибуны было ${isEnabled ? 'включено' : 'отключено'} на этом сервере`,
+
+            PLAYLIST_PLAY_COUNT: () => 'Количество треков',
+            PLAYLIST_PLAY_OFFSET: () => 'Начало позиции',
+
+            RADIO_ENABLED: () => 'Невозможно выполнить это действие, поскольку включен режим радио',
+
+            SETTINGS_AUTOREMOVE_DESCRIPTION: () => 'Устанавливает автоматическое удаление сообщений бота',
+            SETTINGS_AUTOREMOVE_STATE_DESCRIPTION: () => 'Состояние',
+            COMMAND_SETTINGS_AUTOREMOVE_SET: (isEnabled) => `Автоматическое удаление сообщений бота было ${isEnabled ? 'включено' : 'отключено'} на этом сервере`,
         }
     }
 }

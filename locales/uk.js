@@ -9,6 +9,7 @@ module.exports = class extends Language {
             LANGUAGE_NAME: () => 'Українська',
             DEFAULT: (key) => `Ключ ${key} ще не переведений на Українську.`,
 
+            ERROR_OCCURRED: () => 'Виникла внутрішня помилка під час виконання команди, спробуйте виконати команду пізніше. Якщо проблема не зникне, зверніться на сервер підтримки — https://discord.gg/8vm6pEemX7',
             DISABLED_PLATFORM: () => '<:tmNekoCute:1020279802441236520> Відтворення музики на цій платформі недоступне, аналогічний запит буде виконано на іншій платформі.',
 
             MENU_FOOTER_PAGE: () => 'Сторінка ',
@@ -419,7 +420,8 @@ module.exports = class extends Language {
             COMMAND_SETTINGS_INFO_LIST: (guild, data) => {
                 return {
                     'Мова': this.language.LANGUAGE_NAME() + '\n',
-                    
+                    'Автоматичне видалення повідомлень': guild.remove_responses ? 'Увімкнено' : 'Вимкнено',
+
                     'DJ-роль': guild.roles.cache.get(data.dj)?.name || 'Не встановлена',
                     'Статус DJ-ролі': data.dj_enabled ? 'Увімкнена' : 'Вимкнена',
                     'Поріг вимоги DJ-ролі': data.dj_threshold + '\n',
@@ -429,7 +431,12 @@ module.exports = class extends Language {
                     'Колір вбудованих повідомлень': data.liveplayer_embed_color.toUpperCase(),
                     'Розташування іконки треку': ['Збоку', 'Знизу', 'Приховати'][data.liveplayer_thumbnail_location] + '\n',
                     
-                    'Збір аналітики': data.analytics_enabled ? 'Увімкнений' : 'Вимкнений'
+                    'Збір аналітики': data.analytics_enabled ? 'Увімкнений' : 'Вимкнений',
+                    'Зміна назви трибуни': data.change_stage_topic ? 'Увімкнено' : 'Вимкнено',
+
+                    'Режим радіо': data.radio_mode == '661765685017575424' ? 'Yukikaze' : data.radio_mode == '1040406009958629436' ? 'Nowaki' : 'Вимкнено',
+                    'Канал радіо': guild.channels.cache.get(data.radio_channel)?.name || 'Не встановлений',
+                    'Радіостанція': require('@config/Radio').find(x => x.streamURL == data.radio_uri).name
                 };
             },
 
@@ -609,7 +616,29 @@ module.exports = class extends Language {
             CONNECTIONS_DESCRIPTION: () => 'Показує інформацію про підключені інтеграції',
             CONNECTIONS_EMBED_AUTHOR: () => 'Інтеграції',
             CONNECTIONS_EMBED_DESCRIPTION: () => 'Інтегровані плейлисти - це спеціальні плейлисти, які не можна ніяк змінювати, але їх, як і звичайні, можна використовувати. Підключити їх можна у профілі на сайті.',
-            CONNECTIONS_LINK_BUTTON: () => 'Перейти'
+            CONNECTIONS_LINK_BUTTON: () => 'Перейти',
+
+            COMMAND_PLAYLIST_CONNECTION_PROTECTED: () => 'Цей тип взаємодії недоступний для інтеграцій',
+            COMMAND_COVER_INVALID_ATTACHMENT: () => 'Встановити на обкладинку плейлиста можна лише зображення',
+            COMMAND_COVER_CHANGED: () => 'Обкладинка плейлиста була змінена',
+
+            PLAYLIST_COVER_DESCRIPTION: () => 'Встановлює обкладинку для вказаного плейлиста',
+            PLAYLIST_COVER_NAME_DESCRIPTION: () => 'Назва плейлиста',
+            PLAYLIST_COVER_IMAGE_DESCRIPTION: () => 'Обкладинка',
+            
+            SETTINGS_STAGE_TOPIC_DESCRIPTION: () => 'Включає або відключає зміну топіка трибуни',
+            SETTINGS_STAGE_TOPIC_STATE_DESCRIPTION: () => 'Стан',
+
+            COMMAND_SETTINGS_STAGE_CHANNEL_TOPIC_CHANGE_STATUS_SET: (isEnabled) => `Зміна топіка трибуни була ${isEnabled ? 'увімкнена' : 'вимкнена'} на цьому сервері`,
+
+            PLAYLIST_PLAY_COUNT: () => 'Количество треков',
+            PLAYLIST_PLAY_OFFSET: () => 'Начало позиции',
+
+            RADIO_ENABLED: () => 'Неможливо виконати цю дію, оскільки увімкнено режим радіо',
+
+            SETTINGS_AUTOREMOVE_DESCRIPTION: () => 'Встановлює автоматичне видалення повідомлень бота',
+            SETTINGS_AUTOREMOVE_STATE_DESCRIPTION: () => 'Стан',
+            COMMAND_SETTINGS_AUTOREMOVE_SET: (isEnabled) => `Автоматичне видалення повідомлень бота було ${isEnabled ? 'увімкнено' : 'вимкнено'} на цьому сервері`,
         }
     }
 }
