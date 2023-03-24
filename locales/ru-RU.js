@@ -437,7 +437,7 @@ module.exports = class extends Language {
 
                     'Режим радио': data.radio_mode == '661765685017575424' ? 'Yukikaze' : data.radio_mode == '1040406009958629436' ? 'Nowaki' : 'Отключено',
                     'Канал радио': guild.channels.cache.get(data.radio_channel)?.name || 'Не установлен',
-                    'Радиостанция': require('@config/Radio').find(x => x.streamURL == data.radio_uri).name
+                    'Радиостанция': require('@config/Radio').find(x => x.streamURL == data.radio_uri)?.name || 'Не установлена'
                 };
             },
 
