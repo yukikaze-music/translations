@@ -138,7 +138,7 @@ module.exports = class extends Language {
             COMMAND_NP_LAST_TRACK: () => '••• The last track is playing now',
             COMMAND_NP_NODE: (name, load) => `The track is playing on the music node ${name} (${load}%)`,
             COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} ${plural(count, 'track', 'tracks', 'tracks')} in the queue..`,
-            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length, queueLength) => `Now playing **[${np.info.title}](${np.info.uri})**\nRequested by: <@${np.info.requested}>\n\nVolume: ${volume}%\n${bar}\n\`[${position} / ${length}] • [${position} / ${queueLength}]\``,
+            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length, queueLength) => `Now playing **[${np.info.title}](https://loli.aspire.su)**\nRequested by: <@${np.info.requested}>\n\nVolume: ${volume}%\n${bar}\n\`[${position} / ${length}] • [${position} / ${queueLength}]\``,
             COMMAND_NP_UPDATE: () => 'Update',
             COMMAND_NP_LYRICS: () => 'Lyrics',
 
@@ -354,7 +354,7 @@ module.exports = class extends Language {
             LIVEPLAYER_MOVE_NOT_MOVED: () => 'The track has not been moved',
 
             LIVEPLAYER_EMBED_TITLE: (name) => `Music player for ${name}`,
-            LIVEPLAYER_EMBED_DESCRIPTION: (np, queueText) => `Now playing [${np.info.title}](${np.info.uri || 'https://loli.aspire.su'})\nRequest by: <@${np.info.requested}>\n\n**List of tracks in the queue:**\n${queueText.length ? queueText : 'Queue is empty...'}`,
+            LIVEPLAYER_EMBED_DESCRIPTION: (np, queueText) => `Now playing [${np.info.title}](https://loli.aspire.su)\nRequest by: <@${np.info.requested}>\n\n**List of tracks in the queue:**\n${queueText.length ? queueText : 'Queue is empty...'}`,
             NOTHING_PLAYING_TOPIC: () => 'Nothing is playing now',
 
             COMMAND_EFFECTS_RESET_MISSING_PERMISSIONS: () => 'You can\'t reset the effects parameters. Ask someone with `Dj` role to do it',

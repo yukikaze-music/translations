@@ -139,7 +139,7 @@ module.exports = class extends Language {
             COMMAND_NP_LAST_TRACK: () => '••• Играет последний трек',
             COMMAND_NP_NODE: (name, load) => `Трек воспроизводится на музыкальной ноде ${name} (${load}%)`,
             COMMAND_NP_TRACK_COUNT: (count) => `••• ${count} ${plural(count, 'трек', 'трека', 'треков')} в очереди..`,
-            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length, queueLength) => `Сейчас играет **[${np.info.title}](${np.info.uri})**\nЗапрос от: <@${np.info.requested}>\n\nГромкость: ${volume}%\n${bar}\n\`[${position} / ${length}] • [${position} / ${queueLength}]\``,
+            COMMAND_NP_DESCRIPTION: (np, volume, bar, position, length, queueLength) => `Сейчас играет **[${np.info.title}](https://loli.aspire.su)**\nЗапрос от: <@${np.info.requested}>\n\nГромкость: ${volume}%\n${bar}\n\`[${position} / ${length}] • [${position} / ${queueLength}]\``,
             COMMAND_NP_UPDATE: () => 'Обновить',
             COMMAND_NP_LYRICS: () => 'Текст',
 
@@ -356,7 +356,7 @@ module.exports = class extends Language {
             LIVEPLAYER_MOVE_NOT_MOVED: () => 'Трек не был перемещен',
 
             LIVEPLAYER_EMBED_TITLE: (name) => `Плеер для сервера ${name}`,
-            LIVEPLAYER_EMBED_DESCRIPTION: (np, queueText) => `Сейчас играет [${np.info.title}](${np.info.uri || 'https://loli.aspire.su'})\nЗапрос от: <@${np.info.requested}>\n\n**Список треков в очереди:**\n${queueText.length ? queueText : 'Очередь пуста...'}`,
+            LIVEPLAYER_EMBED_DESCRIPTION: (np, queueText) => `Сейчас играет [${np.info.title}](https://loli.aspire.su)\nЗапрос от: <@${np.info.requested}>\n\n**Список треков в очереди:**\n${queueText.length ? queueText : 'Очередь пуста...'}`,
             NOTHING_PLAYING_TOPIC: () => 'Ничего не играет',
 
             COMMAND_EFFECTS_RESET_MISSING_PERMISSIONS: () => 'Вы не можете сбросить параметры эффектов. Попросите сделать это участника с ролью `Dj`',
