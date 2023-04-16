@@ -379,7 +379,7 @@ module.exports = class extends Language {
             COMMAND_PREMIUM_ALREADY_ACTIVATED: (ends) => `The server has already activated a premium subscription, which is expiring on: <t:${ends}>`,
             COMMAND_PREMIUM_ACTIVATED: () => 'You have successfully activated a monthly premium subscription on this server.',
             COMMAND_PREMIUM_INFO_TITLE: () => 'Subscription Information',
-            COMMAND_PREMIUM_INFORMATION: () => `By purchasing a premium subscription, you support the work of the bot, and also get perks in return.\n\n**List of perks: **\n\`\`\`md\n# Ability to use a second bot on your server\n# Radio command, that allows you to play specified radio station.\n# Filter command, that allows you to control music playback effects\n# The maximum number of tracks in the queue will be increased from 300 to 500 tracks.\n# The bot will not leave the voice channel if there is no one left in it.\`\`\`\n**[Invite premium bot on your server](https://discord.com/oauth2/authorize?client_id=1040406009958629436&scope=bot+applications.commands&permissions=3491904)**\n\nOne month of premium subscription costs $2. You can donate to any of the following services: **[Boosty](https://boosty.to/yukikaze), [Patreon](https://patreon.com/YukikazeMusic), [Donatello](https://donatello.to/shizofreniya)**\n\nIf you do not have the opportunity to subscribe, then you can get 12 hours of premium by voting for the bot on **[monitoring](https://top.gg/bot/661765685017575424/vote)**\n`,
+            COMMAND_PREMIUM_INFORMATION: () => `By purchasing a premium subscription, you support the work of the bot, and also get perks in return.\n\n**List of perks: **\n\`\`\`md\n# The ability to use the bot as a 24/7 radio on your server\n# Ability to use a second bot on your server\n# Radio command, that allows you to play specified radio station.\n# Filter command, that allows you to control music playback effects\n# The maximum number of tracks in the queue will be increased from 300 to 500 tracks.\n# The bot will not leave the voice channel if there is no one left in it.\`\`\`\n**[Invite premium bot on your server](https://discord.com/oauth2/authorize?client_id=1040406009958629436&scope=bot+applications.commands&permissions=3491904)**\n\nYou can donate to any of the following services: **[Boosty](https://boosty.to/yukikaze), [Patreon](https://patreon.com/YukikazeMusic)**\n\nIf you do not have the opportunity to subscribe, then you can get 12 hours of premium by voting for the bot on **[monitoring](https://top.gg/bot/661765685017575424/vote)**\n`,
             COMMAND_PREMIUM_AVAILABLE_SUBSCRIPTIONS: (count) => `\nYou have **\`${count}\`** available activations. Use **\`/premium activate\`** to activate premium features on your server`,
             COMMAND_PREMIUM_GUILD_ENDS: (ends) => `\n**A premium subscription is activated on your server, which expires on <t:${ends}>**`,
             COMMAND_PREMIUM_USER_ENDS: (ends) => `\n**You have an active premium subscription, which expires on <t:${ends}>**`,
@@ -431,11 +431,11 @@ module.exports = class extends Language {
                     'Track icon location': ['Thumbnail', 'Image', 'Hide'][data.liveplayer_thumbnail_location] + '\n',
                     
                     'Analytics': data.analytics_enabled ? 'Enabled' : 'Disabled',
-                    'Change stage channel topic': data.change_stage_topic ? 'Enabled' : 'Disabled',
+                    'Change stage channel topic': data.change_stage_topic ? 'Enabled' : 'Disabled' + '\n',
 
                     'Radio mode': data.radio_mode == '661765685017575424' ? 'Yukikaze' : data.radio_mode == '1040406009958629436' ? 'Nowaki' : 'Disabled',
                     'Radio channel': guild.channels.cache.get(data.radio_channel)?.name || 'Not installed',
-                    'Radio station': require('@config/Radio').find(x => x.streamURL == data.radio_uri).name
+                    'Radio station': require('@config/Radio').find(x => x.streamURL == data.radio_uri)?.name || 'Not installed'
                 };
             },
 
