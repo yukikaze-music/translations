@@ -643,8 +643,8 @@ module.exports = class extends Language {
 
             COMMAND_RECOMMENDATIONS_EMPTY_HISTORY: () => 'История прослушанных треков отсутствует',
             COMMAND_RECOMMENDATIONS_FAILED: () => 'Не удалось получить список рекомендаций, попробуйте позже',
-            COMMAND_RECOMMENDATIONS_LOADED: (provider, name, size, queueMode) => {
-                let res = `${provider} Плейлист **${name} — рекомендации** загружен в очередь, ${plural(size, `был добавлен **${size}** трек`, `было добавлено **${size}** трека`, `было добавлено **${size}** треков`)}`;
+            COMMAND_RECOMMENDATIONS_LOADED: (provider, name, mixType, size, queueMode) => {
+                let res = `${provider} Плейлист **${name} — ${mixType == 'all' ? 'рекомендации' : 'микс дня'}** загружен в очередь, ${plural(size, `был добавлен **${size}** трек`, `было добавлено **${size}** трека`, `было добавлено **${size}** треков`)}`;
                 
                 switch(queueMode) {
                     case 'shuffle':
@@ -665,7 +665,15 @@ module.exports = class extends Language {
                 }
 
                 return res;
-            }
+            },
+
+            RECOMMENDATIONS_MIX_DESCRIPTION: () => 'Подборка треков',
+            COMMAND_RECOMMENDATIONS_NOTHING_LISTENED_TODAY: () => 'Невозможно создать микс дня, потому что сегодня вы ничего не слушали на этом сервере',
+            COMMAND_RECOMMENDATIONS_EMBED_AUTHOR: (name) => `${name} ∙ Медиатека`,
+            COMMAND_RECOMMENDATIONS_EMBED_TITLE1: () => 'Рекомендации',
+            COMMAND_RECOMMENDATIONS_EMBED_TITLE2: () => 'Микс дня',
+            COMMAND_RECOMMENDATIONS_EMBED_DESCRIPTION1: () => 'Подборка на основе самых прослушиваемых треков на вашем сервере',
+            COMMAND_RECOMMENDATIONS_EMBED_DESCRIPTION2: () => 'Подборка на основе последних прослушанных треков за прошедший день'
         }
     }
 }

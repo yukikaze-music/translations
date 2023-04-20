@@ -644,8 +644,8 @@ module.exports = class extends Language {
 
             COMMAND_RECOMMENDATIONS_EMPTY_HISTORY: () => 'There is no history of listened tracks',
             COMMAND_RECOMMENDATIONS_FAILED: () => 'Failed to get recommendation list, please try again later',
-            COMMAND_RECOMMENDATIONS_LOADED: (provider, name, size, queueMode) => {
-                let res = `${provider} Playlist **${name} — recommendations** has been queued, ${plural(size, `**${size}** track has been added`, `**${size}** tracks have been added`, `**${size}** tracks have been added`)}${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
+            COMMAND_RECOMMENDATIONS_LOADED: (provider, name, mixType, size, queueMode) => {
+                let res = `${provider} Playlist **${name} — ${mixType == 'all' ? 'recommendations' : 'daily mix'}** has been queued, ${plural(size, `**${size}** track has been added`, `**${size}** tracks have been added`, `**${size}** tracks have been added`)}${failed && failed > 1 ? `\n${failed} ${plural(failed, 'track', 'tracks', 'tracks')} were not queued (they are not available in the country where the server is located` : ''}`;
                 
                 switch(queueMode) {
                     case 'shuffle':
@@ -666,7 +666,15 @@ module.exports = class extends Language {
                 }
 
                 return res;
-            }
+            },
+
+            RECOMMENDATIONS_MIX_DESCRIPTION: () => 'Track collection type',
+            COMMAND_RECOMMENDATIONS_NOTHING_LISTENED_TODAY: () => 'Unable to create mix of the day because you didn\'t listen to anything on this server today',
+            COMMAND_RECOMMENDATIONS_EMBED_AUTHOR: (name) => `${name} ∙ Media Library`,
+            COMMAND_RECOMMENDATIONS_EMBED_TITLE1: () => 'Recommendations',
+            COMMAND_RECOMMENDATIONS_EMBED_TITLE2: () => 'Mix of the day',
+            COMMAND_RECOMMENDATIONS_EMBED_DESCRIPTION1: () => 'Selection based on the most streamed tracks on your server',
+            COMMAND_RECOMMENDATIONS_EMBED_DESCRIPTION2: () => 'Selection based on the latest tracks listened over the past day'
         }
     }
 }
