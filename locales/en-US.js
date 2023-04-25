@@ -575,25 +575,25 @@ module.exports = class extends Language {
             YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Query',
             YANDEX_SEARCH_MODE_DESCRIPTION: () => 'Queue repeat mode',
 
-            COMMAND_SETTINGS_ANALYTICS_RESET: () => 'All collected analytics on this server were successfully reset',
-            COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Analytics collection is ${isEnabled ? 'enabled' : 'disabled'} on this server`,
+            COMMAND_SETTINGS_ANALYTICS_RESET: () => 'All collected analytics were reset',
+            COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Analytics collection was ${isEnabled ? 'enabled' : 'disabled'}`,
 
             COMMAND_SETTINGS_LIVEPLAYER_ANNOUNCE_SET: (isEnabled) => `Liveplayer announcements was ${isEnabled ? 'enabled' : 'disabled'} on this server`,
 
-            COMMAND_ANALYTICS_TITLE: () => 'Information about listened tracks on this server',
+            COMMAND_ANALYTICS_TITLE: () => 'Information about your listened tracks',
             COMMAND_ANALYTICS_LISTENED: () => '**Listened:**\n',
             COMMAND_ANALYTICS_TOP: () => 'Most popular tracks:',
-            COMMAND_ANALYTICS_INFO: (size, length) => `In total on this server listened ${size} ${plural(size, 'track', 'tracks', 'tracks')} with a total length of ${length}`,
-            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** was listened **${track.count} times**`,
-            COMMAND_ANALYTICS_DISALED: () => 'Analytics is disabled on this server',
+            COMMAND_ANALYTICS_INFO: (size, length) => `In total you listened ${size} ${plural(size, 'track', 'tracks', 'tracks')} with a total length of ${length}`,
+            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.uri})** was listened **${track.count} times**`,
+            COMMAND_ANALYTICS_DISALED: () => 'Analytics collection is disabled for your account',
 
             COMMAND_LAST_EMPTY: () => 'There is nothing in the listening history',
 
-            ANALYTICS_DESCRIPTION: () => 'Displays a list of tracks that have been listened to on this server',
+            ANALYTICS_DESCRIPTION: () => 'Shows the list of tracks you have listened',
             SETTINGS_ANALYTICS_DESCRIPTION: () => 'Manages analytics settings',
             SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Enables or disables analytics collection',
             SETTINGS_ANALYTICS_STATUS_STATE_DESCRIPTION: () => 'State',
-            SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Resets all collected analytics data on this server',
+            SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Resets all collected analytics data',
 
             COMMAND_PLAYLIST_LIST_TITLE: () => 'List of your playlists',
             COMMAND_PLAYLIST_LIST_DESCRIPTION: (size, created) => `Playlist contains ${size} ${plural(size, 'track', 'tracks', 'tracks')}, created <t:${created}:D>`,

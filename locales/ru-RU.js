@@ -430,8 +430,7 @@ module.exports = class extends Language {
                     'Вызов лайвплеера': guild.data.player_announcements_enabled ? 'Включен' : 'Отключен',
                     'Цвет встроенных сообщений': data.liveplayer_embed_color.toUpperCase(),
                     'Расположение иконки трека': ['Сбоку', 'Внизу', 'Скрыть'][data.liveplayer_thumbnail_location] + '\n',
-                    
-                    'Сбор аналитики': data.analytics_enabled ? 'Включен' : 'Отключен',
+
                     'Изменение топика трибуны': data.change_stage_topic ? 'Включено' : 'Отключено' + '\n',
 
                     'Режим радио': data.radio_mode == '661765685017575424' ? 'Yukikaze' : data.radio_mode == '1040406009958629436' ? 'Nowaki' : 'Отключено',
@@ -567,25 +566,25 @@ module.exports = class extends Language {
             ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
             ZVUK_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
-            COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Вся собранная аналитика на этом сервере была успешно сброшена',
-            COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Сбор аналитики успешно ${isEnabled ? 'включен' : 'отключен'} на этом сервере`,
+            COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Вся собранная аналитика была сброшена',
+            COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Сбор аналитики был ${isEnabled ? 'включен' : 'отключен'}`,
 
             COMMAND_SETTINGS_LIVEPLAYER_ANNOUNCE_SET: (isEnabled) => `Вызов лайвплеера в канал был ${isEnabled ? 'включен' : 'отключен'} на этом сервере`,
 
-            COMMAND_ANALYTICS_TITLE: () => 'Информация о прослушанных треках на этом сервере',
+            COMMAND_ANALYTICS_TITLE: () => 'Информация о ваших прослушанных треках',
             COMMAND_ANALYTICS_LISTENED: () => '**История прослушиваний:**\n',
             COMMAND_ANALYTICS_TOP: () => 'Наиболее часто прослушиваемые:',
-            COMMAND_ANALYTICS_INFO: (size, length) => `Всего на этом сервере прослушали ${size} ${plural(size, 'трек', 'трека', 'треков')} общей длиной ${length}.`,
-            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** был прослушан **${track.count} ${plural(track.count, 'раз', 'раза', 'раз')}**`,
-            COMMAND_ANALYTICS_DISALED: () => 'На этом сервере отключен сбор аналитики',
+            COMMAND_ANALYTICS_INFO: (size, length) => `Всего вы прослушали ${size} ${plural(size, 'трек', 'трека', 'треков')} общей длиной ${length}.`,
+            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.uri})** был прослушан **${track.count} ${plural(track.count, 'раз', 'раза', 'раз')}**`,
+            COMMAND_ANALYTICS_DISABLED: () => 'Для вашего аккаунта отключен сбор аналитики',
 
             COMMAND_LAST_EMPTY: () => 'В истории прослушиваний ничего нет',
 
-            ANALYTICS_DESCRIPTION: () => 'Показывает список треков, которые слушали на этом сервере',
+            ANALYTICS_DESCRIPTION: () => 'Показывает список треков, которые вы прослушали',
             SETTINGS_ANALYTICS_DESCRIPTION: () => 'Управляет параметрами аналитики',
             SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Включает или же отключает сбор аналитики',
             SETTINGS_ANALYTICS_STATUS_STATE_DESCRIPTION: () => 'Состояние',
-            SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Сбрасывает все собранные данные аналитики на этом сервере',
+            SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Сбрасывает все собранные данные аналитики',
 
             SETTINGS_LIVEPLAYER_ANNOUNCE_DESCRIPTION: () => 'Включает вызов лайвплеера в канал, где запустили бота',
             SETTINGS_LIVEPLAYER_ANNOUNCE_STATE_DESCRIPTION: () => 'Состояние',
@@ -672,7 +671,7 @@ module.exports = class extends Language {
             COMMAND_RECOMMENDATIONS_EMBED_AUTHOR: (name) => `${name} ∙ Медиатека`,
             COMMAND_RECOMMENDATIONS_EMBED_TITLE1: () => 'Рекомендации',
             COMMAND_RECOMMENDATIONS_EMBED_TITLE2: () => 'Микс дня',
-            COMMAND_RECOMMENDATIONS_EMBED_DESCRIPTION1: () => 'Подборка на основе самых прослушиваемых треков на вашем сервере',
+            COMMAND_RECOMMENDATIONS_EMBED_DESCRIPTION1: () => 'Подборка на основе самых прослушиваемых треков',
             COMMAND_RECOMMENDATIONS_EMBED_DESCRIPTION2: () => 'Подборка на основе последних прослушанных треков за прошедший день'
         }
     }

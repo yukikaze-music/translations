@@ -569,25 +569,25 @@ module.exports = class extends Language {
             ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запит',
             ZVUK_SEARCH_MODE_DESCRIPTION: () => 'Режим повторення черги',
 
-            COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Уся зібрана аналітика на цьому сервері була успішно скинута',
-            COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Збір аналітики ${isEnabled ? 'включений' : 'відключений'} на цьому сервері`,
+            COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Уся зібрана аналітика була скинута',
+            COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Збір аналітики був ${isEnabled ? 'включений' : 'відключений'}`,
 
             COMMAND_SETTINGS_LIVEPLAYER_ANNOUNCE_SET: (isEnabled) => `Виклик лайвплеєра в канал був ${isEnabled ? 'увімкнений' : 'вимкнений'} на цьому сервері`,
 
-            COMMAND_ANALYTICS_TITLE: () => 'Інформація про прослухані треки на цьому сервері',
+            COMMAND_ANALYTICS_TITLE: () => 'Інформація про треки, які ви прослухали',
             COMMAND_ANALYTICS_LISTENED: () => '**Історія прослуховувань:**\n',
             COMMAND_ANALYTICS_TOP: () => 'Найчастіше прослуховуються:',
-            COMMAND_ANALYTICS_INFO: (size, length) => `Усього на цьому сервері прослухали ${size} ${plural(size, 'трек', 'треки', 'треків')} загальною довжиною ${length}`,
-            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.url})** був прослуханий **${track.count} ${plural(track.count, 'раз', 'рази', 'разів')}**`,
-            COMMAND_ANALYTICS_DISALED: () => 'На цьому сервері вимкнено збір аналітики',
+            COMMAND_ANALYTICS_INFO: (size, length) => `Усього ви прослухали ${size} ${plural(size, 'трек', 'треки', 'треків')} загальною довжиною ${length}`,
+            COMMAND_ANALYTICS_TRACK: (index, track) => `\`[${index}]\` **[${track.author} — ${track.title}](${track.uri})** був прослуханий **${track.count} ${plural(track.count, 'раз', 'рази', 'разів')}**`,
+            COMMAND_ANALYTICS_DISALED: () => 'Для вашого аккаунту вимкнено збір аналітики',
 
             COMMAND_LAST_EMPTY: () => 'В історії прослуховувань нічого немає',
 
-            ANALYTICS_DESCRIPTION: () => 'Відображає список треків, які слухали на цьому сервері',
+            ANALYTICS_DESCRIPTION: () => 'Показує список треків, які ви прослухали',
             SETTINGS_ANALYTICS_DESCRIPTION: () => 'Керує параметрами аналітики',
             SETTINGS_ANALYTICS_STATUS_DESCRIPTION: () => 'Включає або відключає збір аналітики',
             SETTINGS_ANALYTICS_STATUS_STATE_DESCRIPTION: () => 'Стан',
-            SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Скидає всі зібрані дані аналітики на цьому сервері',
+            SETTINGS_ANALYTICS_RESET_DESCRIPTION: () => 'Скидає всі зібрані дані аналітики',
 
             COMMAND_PLAYLIST_LIST_TITLE: () => 'Список ваших плейлистів',
             COMMAND_PLAYLIST_LIST_DESCRIPTION: (size, created) => `Усього ${size} ${plural(size, 'трек', 'треки', 'треків')}, створений <t:${created}:D>`,
