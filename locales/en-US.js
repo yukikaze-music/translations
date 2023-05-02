@@ -142,7 +142,7 @@ module.exports = class extends Language {
             COMMAND_NP_UPDATE: () => 'Update',
             COMMAND_NP_LYRICS: () => 'Lyrics',
 
-            COMMAND_QUEUE_NOW_PLAYING: (title) => `Now playing: ${title}`,
+            COMMAND_QUEUE_NOW_PLAYING: (np) => `Now playing **[${np.info.title}](https://loli.aspire.su)**\nRequested by: <@${np.info.requested}>`,
             COMMAND_QUEUE_TITLE: (guild) => `Queue for ${guild}`,
             COMMAND_QUEUE_FOOTER: (page, length) => `••• Page: ${page} • ${length} ${plural(length, 'track', 'tracks', 'tracks')} left`,
 
@@ -466,6 +466,8 @@ module.exports = class extends Language {
             PLAY_DESCRIPTION: () => 'Searches for a track for the specified query or link',
             PLAY_QUERY_DESCRIPTION: () => 'Query',
             PLAY_MODE_DESCRIPTION: () => 'Queue repeat mode',
+            PLAY_COUNT_DESCRIPTION: () => 'Number of tracks',
+            PLAY_OFFSET_DESCRIPTION: () => 'Start position',
 
             PREMIUM_ACTIVATE_DESCRIPTION: () => 'Activates a premium subscription on the server',
             PREMIUM_INFO_DESCRIPTION: () => 'Shows subscription information',

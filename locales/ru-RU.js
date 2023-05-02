@@ -143,7 +143,7 @@ module.exports = class extends Language {
             COMMAND_NP_UPDATE: () => 'Обновить',
             COMMAND_NP_LYRICS: () => 'Текст',
 
-            COMMAND_QUEUE_NOW_PLAYING: (title) => `Сейчас играет: ${title}`,
+            COMMAND_QUEUE_NOW_PLAYING: (np) => `Сейчас играет **[${np.info.title}](https://loli.aspire.su)**\nЗапрос от: <@${np.info.requested}>`,
             COMMAND_QUEUE_TITLE: (guild) => `Очередь сервера ${guild}`,
             COMMAND_QUEUE_FOOTER: (page, length) => `••• Страница: ${page} • ${length} ${plural(length, 'трек остался', 'трека осталось', 'треков осталось')}`,
 
@@ -466,6 +466,8 @@ module.exports = class extends Language {
             PLAY_DESCRIPTION: () => 'Ищет трек по указанному запросу или ссылке',
             PLAY_QUERY_DESCRIPTION: () => 'Запрос',
             PLAY_MODE_DESCRIPTION: () => 'Режим повторения очереди',
+            PLAY_OFFSET_DESCRIPTION: () => 'Начало позиции',
+            PLAY_COUNT_DESCRIPTION: () => 'Количество треков',
 
             PREMIUM_ACTIVATE_DESCRIPTION: () => 'Активирует премиум подписку на сервере',
             PREMIUM_INFO_DESCRIPTION: () => 'Показывает информацию о подписке',
