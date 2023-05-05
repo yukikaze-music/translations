@@ -275,9 +275,10 @@ module.exports = class extends Language {
 
             COMMAND_LANGUAGE_SUCCESS: () => 'Language has been succesfully changed',
 
-            COMMAND_LIVEPLAYER_INVALID_CHANNEL: () => 'You cannot select this channel for a live-player',
-            COMMAND_LIVEPLAYER_SET: (channel) => `Live-player succesfully set in ${channel}`,
-            COMMAND_LIVEPLAYER_REMOVED: () => 'Live-player is disabled',
+            COMMAND_LIVEPLAYER_INVALID_CHANNEL: () => 'You can set liveplayer for text channel only',
+            COMMAND_LIVEPLAYER_MISSING_PERMISSIONS: (perms) => `I don't have enough permissions in this channel: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
+            COMMAND_LIVEPLAYER_SET: (channel) => `Liveplayer succesfully set in ${channel}`,
+            COMMAND_LIVEPLAYER_REMOVED: () => 'Liveplayer is disabled',
 
             COMMAND_DJ_INVALID_ROLE: () => 'You can\'t select this role',
             COMMAND_DJ_ROLE_SET: () => 'Role was selected succesfully',

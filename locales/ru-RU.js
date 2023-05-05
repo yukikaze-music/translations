@@ -276,7 +276,8 @@ module.exports = class extends Language {
 
             COMMAND_LANGUAGE_SUCCESS: () => 'Язык сервера успешно изменен',
 
-            COMMAND_LIVEPLAYER_INVALID_CHANNEL: () => 'Вы не можете установить лайвплеер для этого канала',
+            COMMAND_LIVEPLAYER_INVALID_CHANNEL: () => 'Вы можете установить лайвплеер только для текстового канала',
+            COMMAND_LIVEPLAYER_MISSING_PERMISSIONS: (perms) => `У меня недостаточно прав в этом канале: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
             COMMAND_LIVEPLAYER_SET: (channel) => `Лайвплеер установлен для канала ${channel}`,
             COMMAND_LIVEPLAYER_REMOVED: () => 'Лайвплеер был успешно отключен',
 
@@ -464,7 +465,7 @@ module.exports = class extends Language {
             PING_DESCRIPTION: () => 'Показывает пинг бота',
 
             PLAY_DESCRIPTION: () => 'Ищет трек по указанному запросу или ссылке',
-            PLAY_QUERY_DESCRIPTION: () => 'Запрос',
+            PLAY_QUERY_DESCRIPTION: () => 'Запрос, который бот будет искать',
             PLAY_MODE_DESCRIPTION: () => 'Режим повторения очереди',
             PLAY_OFFSET_DESCRIPTION: () => 'Начало позиции',
             PLAY_COUNT_DESCRIPTION: () => 'Количество треков',
@@ -482,7 +483,7 @@ module.exports = class extends Language {
             PLAYLIST_PLAY_MODE_DESCRIPTION: () => 'Режим повторения очереди',
             PLAYLIST_ADD_DESCRIPTION: () => 'Добавляет трек в ваш плейлист',
             PLAYLIST_ADD_NAME_DESCRIPTION: () => 'Название плейлиста',
-            PLAYLIST_ADD_QUERY_DESCRIPTION: () => 'Запрос',
+            PLAYLIST_ADD_QUERY_DESCRIPTION: () => 'Запрос, который бот будет искать',
             PLAYLIST_REMOVE_DESCRIPTION: () => 'Удаляет трек из вашего плейлиста',
             PLAYLIST_REMOVE_NAME_DESCRIPTION: () => 'Название плейлиста',
             PLAYLIST_REMOVE_INDEX_DESCRIPTION: () => 'Номер трека',
@@ -552,7 +553,7 @@ module.exports = class extends Language {
             VK_USER_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             VK_SEARCH_DESCRIPTION: () => 'Ищет треки в VK',
-            VK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            VK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос, который бот будет искать',
             VK_SEARCH_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             VOLUME_DESCRIPTION: () => 'Изменяет уровень громкости для этого сервера',
@@ -561,12 +562,8 @@ module.exports = class extends Language {
             VOTESKIP_DESCRIPTION: () => 'Проголосовать за пропуск текущего трека',
 
             YANDEX_SEARCH_DESCRIPTION: () => 'Ищет треки на Yandex.Music',
-            YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
+            YANDEX_SEARCH_QUERY_DESCRIPTION: () => 'Запрос, который бот будет искать',
             YANDEX_SEARCH_MODE_DESCRIPTION: () => 'Режим повторения очереди',
-
-            ZVUK_SEARCH_DESCRIPTION: () => 'Ищет треки на платформе Zvuk',
-            ZVUK_SEARCH_QUERY_DESCRIPTION: () => 'Запрос',
-            ZVUK_MODE_DESCRIPTION: () => 'Режим повторения очереди',
 
             COMMAND_SETTINGS_ANALYTICS_RESET: () => 'Вся собранная аналитика была сброшена',
             COMMAND_SETTINGS_ANALYTICS_SET: (isEnabled) => `Сбор аналитики был ${isEnabled ? 'включен' : 'отключен'}`,

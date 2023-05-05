@@ -275,7 +275,8 @@ module.exports = class extends Language {
 
             COMMAND_LANGUAGE_SUCCESS: () => 'Мова серверу успішно змінена',
 
-            COMMAND_LIVEPLAYER_INVALID_CHANNEL: () => 'Ви не можете встановити лайвплеєр для цього каналу',
+            COMMAND_LIVEPLAYER_INVALID_CHANNEL: () => 'Ви можете встановити лайвплеєр тільки для текстового каналу',
+            COMMAND_LIVEPLAYER_MISSING_PERMISSIONS: (perms) => `У мене недостатньо наступних прав в цьому каналі: ${Array.isArray(perms) && perms.map(x => `**${x}**`).join(', ') || `**${perms}**`}`,
             COMMAND_LIVEPLAYER_SET: (channel) => `Лайвплеєр встановлений для каналу ${channel}`,
             COMMAND_LIVEPLAYER_REMOVED: () => 'Лайвплеєр був успішно вимкнений',
 
